@@ -7,10 +7,9 @@ const createWindow = (): void => {
   win = new BrowserWindow({
     width: 600,
     height: 400,
+    // titleBarStyle: 'hidden',
     webPreferences: {
-      // nodeモジュールをレンダラープロセスで使用不可に（XSS対策）
       nodeIntegration: false,
-      // 実行コンテキストを分離
       contextIsolation: true,
       // devTools: false,
       preload: path.join(__dirname, 'preload.js')
@@ -18,6 +17,7 @@ const createWindow = (): void => {
   })
 
   win.loadFile('./build/index.html')
+  win.webContents.openDevTools()
 
   // メニューを無効化
   Menu.setApplicationMenu(null)
