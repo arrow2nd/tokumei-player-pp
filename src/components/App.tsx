@@ -2,7 +2,7 @@ import React from 'react'
 import UI from './ui'
 
 const App = (): JSX.Element => (
-  <div className="App">
+  <div className="m-1">
     <UI />
   </div>
 )
