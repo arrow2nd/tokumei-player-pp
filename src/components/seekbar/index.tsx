@@ -2,11 +2,16 @@ import React, { useState } from 'react'
 import Time from './time'
 
 type Props = {
+  className?: string
   currentSec: number
   durationSec: number
 }
 
-const Seekbar = ({ currentSec, durationSec }: Props): JSX.Element => {
+const Seekbar = ({
+  className = '',
+  currentSec,
+  durationSec
+}: Props): JSX.Element => {
   const [isDuringSeek, setIsDuringSeek] = useState(false)
   const [seekSec, setSeekSec] = useState(0)
 
@@ -26,14 +31,14 @@ const Seekbar = ({ currentSec, durationSec }: Props): JSX.Element => {
   }
 
   return (
-    <div>
+    <div className={`flex items-center w-11/12 drag-none ${className}`}>
       <Time sec={currentSec} />
       <input
-        className="appearance-none cursor-pointer bg-gray-300 overflow-hidden outline-none w-3/4 h-1.5 rounded-md mx-3"
+        className="w-full h-1.5 mx-3 w-appearance-none cursor-pointer bg-gray-300 overflow-hidden outline-none rounded-md"
         type="range"
-        min="0"
+        min={0}
         max={durationSec}
-        step="1"
+        step={1}
         value={isDuringSeek ? seekSec : currentSec}
         onChange={handleSeek}
         onMouseDown={handleSeekStart}

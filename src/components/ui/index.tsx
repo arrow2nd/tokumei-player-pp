@@ -2,6 +2,7 @@ import { OptionType } from '../../types/option'
 import React from 'react'
 import Select from '../select'
 import Seekbar from '../seekbar'
+import Buttons from '../buttons'
 
 const UI = (): JSX.Element => {
   const optionsA: OptionType[] = [
@@ -24,18 +25,19 @@ const UI = (): JSX.Element => {
   ]
 
   return (
-    <div>
-      <div className="flex flex-col w-96">
+    <>
+      <div className="flex flex-col w-9/12 drag-none">
         <Select className="text-sm" name="A" options={optionsA} limit={20} />
         <Select
           className="mt-1 text-xs"
           name="B"
           options={optionsB}
-          limit={30}
+          limit={40}
         />
       </div>
-      <Seekbar currentSec={0} durationSec={0} />
-    </div>
+      <Seekbar className="mt-2" currentSec={0} durationSec={3600} />
+      <Buttons className="mt-2" />
+    </>
   )
 }
 

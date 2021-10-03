@@ -5,9 +5,9 @@ let win: BrowserWindow
 
 const createWindow = (): void => {
   win = new BrowserWindow({
-    width: 600,
-    height: 400,
-    // titleBarStyle: 'hidden',
+    width: 550,
+    height: 160,
+    titleBarStyle: 'hidden',
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
