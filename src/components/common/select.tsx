@@ -1,20 +1,31 @@
 import React from 'react'
-import RSelect, { StylesConfig, OptionsOrGroups, GroupBase } from 'react-select'
+import { OptionType } from '../../types/option'
+import { truncate } from '../../scripts/util'
 
 type Props = {
-  options: OptionsOrGroups<unknown, GroupBase<unknown>>
+  className?: string
+  name: string
+  options: OptionType[]
+  limit: number
 }
 
-const Select = ({ options }: Props): JSX.Element => {
-  const customStyles: StylesConfig = {
-    control: (provided) => ({
-      ...provided,
-      border: 'none',
-      boxShadow: 'none'
-    })
-  }
+const Select = ({
+  className = '',
+  name,
+  options,
+  limit
+}: Props): JSX.Element => {
+  const optionItems = options.map((e) => (
+    <option key={e.label} value={e.value}>
+      {truncate(e.label, limit)}
+    </option>
+  ))
 
-  return <RSelect options={options} styles={customStyles} />
+  return (
+    <select className={`border-none outline-none ${className}`} name={name}>
+      {optionItems}
+    </select>
+  )
 }
 
 export default Select
