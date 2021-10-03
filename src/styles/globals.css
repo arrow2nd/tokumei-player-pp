@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+
+/* シークバー */
+input ::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #b10624;
+  width: 0px;
+  height: 0px;
+  box-shadow: -100vw 0 0 100vw #b10624;
+}
+
+@tailwind utilities;
