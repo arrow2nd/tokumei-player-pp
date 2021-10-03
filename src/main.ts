@@ -8,6 +8,7 @@ const createWindow = (): void => {
     width: 550,
     height: 160,
     titleBarStyle: 'hidden',
+    resizable: false,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
