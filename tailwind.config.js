@@ -5,7 +5,14 @@ module.exports = {
   purge: ['./src/component/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {}
+    extend: {
+      fontFamily: {
+        default: ['"M PLUS Rounded 1c"', 'sans-serif']
+      },
+      fontSize: {
+        xxs: ['.65rem', '1rem']
+      }
+    }
   },
   variants: {
     extend: {}

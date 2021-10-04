@@ -102,6 +102,11 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fontsource/m-plus-rounded-1c@^4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/m-plus-rounded-1c/-/m-plus-rounded-1c-4.5.0.tgz#cff45a53f932ce2ca4c65f4838fd0030e1aed762"
+  integrity sha512-1aEtf8LHAlihD4UrFI8rIhhBP/xZ62fvefKUqh5b1E+kcGYDOBSk6BaH3q0R7vmZHUjpjUCxrqIdt7GfUWc9yg==
+
 "@humanwhocodes/config-array@^0.5.0":
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.5.0.tgz#1407967d4c6eecd7388f83acf1eaf4d0c6e58ef9"
