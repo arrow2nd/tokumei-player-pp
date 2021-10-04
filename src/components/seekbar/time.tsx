@@ -14,7 +14,7 @@ const Time = ({ sec }: Props): JSX.Element => {
     [sec]
   )
 
-  return <span className="text-xs">{`${minStr}:${secStr}`}</span>
+  return <span className="text-xxs">{`${minStr}:${secStr}`}</span>
 }
 
 export default Time
