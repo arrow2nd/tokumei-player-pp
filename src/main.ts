@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, Menu } from 'electron'
+import { app, BrowserWindow, dialog, ipcMain, Menu, shell } from 'electron'
 import path from 'path'
 
 let win: BrowserWindow
@@ -22,12 +22,12 @@ const createWindow = (): void => {
 
   // メニューを無効化
   Menu.setApplicationMenu(null)
-}
 
-// 多重起動を防止
-const doubleboot = app.requestSingleInstanceLock()
-if (!doubleboot) {
-  app.quit()
+  // 多重起動を防止
+  const doubleboot = app.requestSingleInstanceLock()
+  if (!doubleboot) {
+    app.quit()
+  }
 }
 
 // 初期化できたらウィンドウを作成
@@ -49,8 +49,33 @@ app.on('window-all-closed', () => {
 
 //---------------------------------------------------
 
-// アプリケーションを終了
-ipcMain.on('ipc-app-exit', () => app.quit())
+// サイトを開く
+ipcMain.on('open-website', (_event: Electron.IpcMainEvent, tag: string) => {
+  shell.openExternal(`https://omocoro.jp/tag/${encodeURIComponent(tag)}`)
+})
 
-// ウィンドウを最小化
-ipcMain.on('ipc-win-minimize', () => win.minimize())
+// 確認ダイアログ
+ipcMain.handle(
+  'info-dialog',
+  async (
+    _event: Electron.IpcMainInvokeEvent,
+    title: string,
+    content: string
+  ): Promise<Electron.MessageBoxReturnValue> =>
+    await dialog.showMessageBox(win, {
+      type: 'question',
+      buttons: ['はい', 'いいえ'],
+      defaultId: 1,
+      title: '確認',
+      message: title,
+      detail: content
+    })
+)
+
+// エラーダイアログ
+ipcMain.on(
+  'error-dialog',
+  (_event: Electron.IpcMainEvent, title: string, content: string) => {
+    dialog.showErrorBox(title, content)
+  }
+)
