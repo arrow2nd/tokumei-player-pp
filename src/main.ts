@@ -7,8 +7,9 @@ const createWindow = (): void => {
   win = new BrowserWindow({
     width: 550,
     height: 160,
-    titleBarStyle: 'hidden',
-    resizable: false,
+    frame: false,
+    show: false,
+    // resizable: false,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -19,6 +20,9 @@ const createWindow = (): void => {
 
   win.loadFile('./build/index.html')
   win.webContents.openDevTools()
+
+  // 表示可能になったら表示する
+  win.once('ready-to-show', () => win.show())
 
   // メニューを無効化
   Menu.setApplicationMenu(null)
@@ -48,6 +52,12 @@ app.on('window-all-closed', () => {
 })
 
 //---------------------------------------------------
+
+// ウィンドウを閉じる
+ipcMain.on('win-close', () => win.close())
+
+// ウィンドウを最小化
+ipcMain.on('win-minimize', () => win.minimize())
 
 // サイトを開く
 ipcMain.on('open-website', (_event: Electron.IpcMainEvent, tag: string) => {
