@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, useEffect } from 'react'
-import { truncate } from '../../../scripts/util'
 import { OptionType } from '../../../types/option'
+import { createOptions } from './createOptions'
 
 type Props = {
   className?: string
@@ -16,12 +16,9 @@ const EpisodeSelect = ({
   const [options, setOptions] = useState([] as JSX.Element[])
   const [selectedValue, setSelectedValue] = useState('')
 
+  // エピソードリストを更新
   useEffect(() => {
-    const newOptions = episodeOptions.map((e) => (
-      <option key={e.label} value={e.value}>
-        {truncate(e.label, 35)}
-      </option>
-    ))
+    const newOptions = createOptions(episodeOptions, 35)
 
     setOptions(newOptions)
 
@@ -31,6 +28,7 @@ const EpisodeSelect = ({
     }
   }, [episodeOptions])
 
+  // 値が変更された
   const handleChangeValue = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedValue(e.currentTarget.value)
     onChange(e)

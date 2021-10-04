@@ -1,5 +1,6 @@
 import React, { useMemo, ChangeEvent } from 'react'
 import { GroupOptionType } from '../../../types/option'
+import { createOptions } from './createOptions'
 
 type Props = {
   className?: string
@@ -12,19 +13,13 @@ const RadioNameSelect = ({
   radioOptions,
   onChange
 }: Props): JSX.Element => {
-  const optGroups = useMemo(
-    () =>
-      radioOptions.map((e) => (
-        <optgroup key={e.label} label={e.label}>
-          {e.options.map((e) => (
-            <option key={e.label} value={e.value}>
-              {e.label}
-            </option>
-          ))}
-        </optgroup>
-      )),
-    [radioOptions]
-  )
+  const optGroups = useMemo(() => {
+    return radioOptions.map((e) => (
+      <optgroup className="font-sans" key={e.label} label={e.label}>
+        {createOptions(e.options, 40)}
+      </optgroup>
+    ))
+  }, [radioOptions])
 
   return (
     <select
