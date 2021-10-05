@@ -13,23 +13,23 @@ const createWindow = (): void => {
   win = new BrowserWindow({
     title: '匿名Player++',
     ...size,
-    // minWidth: size.width,
-    // minHeight: size.height,
-    // maxWidth: size.width,
-    // maxHeight: size.height,
+    minWidth: size.width,
+    minHeight: size.height,
+    maxWidth: size.width,
+    maxHeight: size.height,
     resizable: true, // electron issue : #30788
     frame: false,
     show: false,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
-      // devTools: false,
+      devTools: false,
       preload: path.join(__dirname, 'preload.js')
     }
   })
 
   win.loadFile('./build/index.html')
-  win.webContents.openDevTools()
+  // win.webContents.openDevTools()
 
   // 表示可能になったら表示する
   win.once('ready-to-show', () => win.show())
