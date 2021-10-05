@@ -52,12 +52,9 @@ const UI = (): JSX.Element => {
   ])
 
   // ラジオ名が変更された
-  const handlChangeRadio = useCallback(
-    (e: React.ChangeEvent<HTMLSelectElement>) => {
-      setRadioName(e.currentTarget.value)
-    },
-    []
-  )
+  const handlChangeRadio = useCallback((name: string) => {
+    setRadioName(name)
+  }, [])
 
   // エピソードが変更された
   const handleChangeEpisode = useCallback((path: string) => {

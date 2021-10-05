@@ -32,7 +32,6 @@ const EpisodeSelect = ({
     }
   }, [episodeOptions, onChange])
 
-  // 値が変更された
   const handleChangeValue = (e: ChangeEvent<HTMLSelectElement>) => {
     onChange(e.currentTarget.value)
   }

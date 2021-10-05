@@ -7,7 +7,7 @@ type Props = {
   className?: string
   radioOptions: GroupOptionType[]
   disabled: boolean
-  onChange: (e: ChangeEvent<HTMLSelectElement>) => void
+  onChange: (name: string) => void
 }
 
 const RadioNameSelect = ({
@@ -26,12 +26,16 @@ const RadioNameSelect = ({
     [radioOptions]
   )
 
+  const handleChangeValue = (e: ChangeEvent<HTMLSelectElement>) => {
+    onChange(e.currentTarget.value)
+  }
+
   return (
     <Select
       className={className}
       disabled={disabled}
       options={optGroups}
-      onChange={onChange}
+      onChange={handleChangeValue}
     />
   )
 }

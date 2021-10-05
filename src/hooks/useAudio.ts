@@ -46,11 +46,14 @@ export const useAudio = (): AudioType => {
     async (path: string) => {
       audioElm.src = `https://omocoro.heteml.net/radio/${path}`
       await audioElm.play()
+
       setDurationSec(audioElm.duration)
     },
     [audioElm]
   )
+
   const pause = useCallback(() => audioElm.pause(), [audioElm])
+
   const resume = useCallback(() => audioElm.play(), [audioElm])
 
   // セッター
@@ -58,6 +61,7 @@ export const useAudio = (): AudioType => {
     (sec: number) => (audioElm.currentTime = sec),
     [audioElm]
   )
+
   const setEndedFunc = useCallback(
     (callBack: () => void) => (audioElm.onended = callBack),
     [audioElm]
