@@ -10,6 +10,7 @@ let win: BrowserWindow
 
 const createWindow = (): void => {
   win = new BrowserWindow({
+    title: '匿名Player++',
     ...size,
     minWidth: size.width,
     minHeight: size.height,
