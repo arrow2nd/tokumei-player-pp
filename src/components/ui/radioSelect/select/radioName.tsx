@@ -1,6 +1,6 @@
 import React, { useMemo, ChangeEvent } from 'react'
-import { GroupOptionType } from '../../../../types/option'
 import Select from '../../../common/select'
+import { GroupOptionType } from '../../../../types/option'
 import { createOptions } from './createOptions'
 
 type Props = {
@@ -36,4 +36,4 @@ const RadioNameSelect = ({
   )
 }
 
-export default RadioNameSelect
+export default React.memo(RadioNameSelect)

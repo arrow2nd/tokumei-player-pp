@@ -31,7 +31,19 @@ const Control = ({
   onClickOpen,
   onChangeShuffle
 }: Props): JSX.Element => {
-  console.log(`[conrol] playing = ${isPlaying}`)
+  const PlayControlButtons = () => (
+    <>
+      <Button disabled={isPlaying} onClick={onClickPrev}>
+        <MdSkipPrevious />
+      </Button>
+      <Button onClick={onClickPlay}>
+        {isPlaying ? <MdPause /> : <MdPlayArrow />}
+      </Button>
+      <Button disabled={isPlaying} onClick={onClickNext}>
+        <MdSkipNext />
+      </Button>
+    </>
+  )
 
   return (
     <div
@@ -41,15 +53,7 @@ const Control = ({
         <MdOpenInBrowser />
       </Button>
       <div className="flex mx-4 text-3xl">
-        <Button disabled={isPlaying} onClick={onClickPrev}>
-          <MdSkipPrevious />
-        </Button>
-        <Button onClick={onClickPlay}>
-          {isPlaying ? <MdPause /> : <MdPlayArrow />}
-        </Button>
-        <Button disabled={isPlaying} onClick={onClickNext}>
-          <MdSkipNext />
-        </Button>
+        <PlayControlButtons />
       </div>
       <Button onClick={onChangeShuffle}>
         {isShuffle ? <MdShuffleOn /> : <MdShuffle />}
@@ -58,4 +62,4 @@ const Control = ({
   )
 }
 
-export default Control
+export default React.memo(Control)

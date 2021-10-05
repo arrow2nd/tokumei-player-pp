@@ -29,7 +29,10 @@ const Seekbar = ({
   // シーク中
   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
     const sec = parseFloat(e.currentTarget.value)
-    if (seekSec !== sec) setSeekSec(sec)
+
+    if (seekSec !== sec) {
+      setSeekSec(sec)
+    }
   }
 
   return (
@@ -51,4 +54,4 @@ const Seekbar = ({
   )
 }
 
-export default Seekbar
+export default React.memo(Seekbar)

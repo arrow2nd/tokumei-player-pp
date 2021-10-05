@@ -9,6 +9,7 @@ const Time = ({ sec }: Props): JSX.Element => {
     () => String(Math.floor(sec / 60)).padStart(2, '0'),
     [sec]
   )
+
   const secStr = useMemo(
     () => String(Math.ceil(sec % 60)).padStart(2, '0'),
     [sec]

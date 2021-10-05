@@ -12,6 +12,7 @@ const UI = (): JSX.Element => {
   const [isShuffle, setIsShuffle] = useState(false)
 
   const radioOptions = useRadioList()
+
   if (radioOptions.length > 0 && radioName === '') {
     setRadioName(radioOptions[0].options[0].label)
   }
@@ -104,6 +105,7 @@ const UI = (): JSX.Element => {
       'ブラウザを開きますか？',
       `オモコロで「${radioName}」の記事を検索します。`
     )
+
     if (isOpenWebSite) {
       window.api.openWebSite(radioName)
     }

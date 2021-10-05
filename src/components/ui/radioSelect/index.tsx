@@ -37,4 +37,4 @@ const RadioSelect = ({
   </div>
 )
 
-export default RadioSelect
+export default React.memo(RadioSelect)

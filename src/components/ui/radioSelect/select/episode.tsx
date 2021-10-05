@@ -23,6 +23,7 @@ const EpisodeSelect = ({
   // エピソードリストを更新
   useEffect(() => {
     const newOptions = createOptions(episodeOptions, 35)
+
     setOptions(newOptions)
 
     // 最新話をセット
@@ -47,4 +48,4 @@ const EpisodeSelect = ({
   )
 }
 
-export default EpisodeSelect
+export default React.memo(EpisodeSelect)
