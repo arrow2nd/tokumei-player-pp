@@ -1,6 +1,6 @@
 import React from 'react'
-import { truncate } from '../../../scripts/util'
-import { OptionType } from '../../../types/option'
+import { truncate } from '../../../../scripts/util'
+import { OptionType } from '../../../../types/option'
 
 /**
  * option要素を作成

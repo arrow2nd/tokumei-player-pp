@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react'
-import Seekbar from '../seekbar'
-import Buttons from '../buttons'
-import RadioSelect from '../radioSelect'
+import Seekbar from './seekbar'
+import Buttons from './buttons'
+import RadioSelect from './radioSelect'
 import { useRadioList } from '../../hooks/useRadioList'
 import { useRadioEpisode } from '../../hooks/useRadioEpisode'
 // import { useAudio } from '../../hooks/useAudio'
@@ -39,6 +39,7 @@ const UI = (): JSX.Element => {
       <RadioSelect
         radioOptions={radioOptions}
         episodeOptions={episodeOptions}
+        disabled={false}
         onChangeRadio={handlChangeRadio}
       />
       <Seekbar className="mt-2" currentSec={0} durationSec={3600} />
