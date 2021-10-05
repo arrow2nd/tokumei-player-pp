@@ -39,10 +39,7 @@
       "category": "Entertainment"
     },
     "linux": {
-      "target": [
-        "AppImage",
-        "deb"
-      ],
+      "target": "AppImage",
       "icon": "./src/icons/linux.png",
       "category": "Audio"
     },
