@@ -1,5 +1,6 @@
-import { app, BrowserWindow, dialog, ipcMain, Menu, shell } from 'electron'
 import path from 'path'
+import { app, BrowserWindow, dialog, ipcMain, Menu, shell } from 'electron'
+import { checkUpdate } from './scripts/checkUpdate'
 
 const size = {
   width: 550,
@@ -12,10 +13,10 @@ const createWindow = (): void => {
   win = new BrowserWindow({
     title: '匿名Player++',
     ...size,
-    minWidth: size.width,
-    minHeight: size.height,
-    maxWidth: size.width,
-    maxHeight: size.height,
+    // minWidth: size.width,
+    // minHeight: size.height,
+    // maxWidth: size.width,
+    // maxHeight: size.height,
     resizable: true, // electron issue : #30788
     frame: false,
     show: false,
@@ -47,6 +48,9 @@ const createWindow = (): void => {
 app.whenReady().then(() => {
   createWindow()
 
+  // 更新を確認
+  checkUpdate().then((url) => openDownloadPage(url))
+
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow()
@@ -59,6 +63,25 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
+
+//---------------------------------------------------
+
+const openDownloadPage = (url: string | undefined) => {
+  if (!url || !/^https:\/\/github\.com/.test(url)) return
+
+  const result = dialog.showMessageBoxSync(win, {
+    type: 'question',
+    buttons: ['はい', 'いいえ'],
+    defaultId: 0,
+    title: '更新通知',
+    message: '新しいバージョンが利用可能です',
+    detail: 'ブラウザを開いてファイルをダウンロードしますか？'
+  })
+
+  if (result === 0) {
+    shell.openExternal(url)
+  }
+}
 
 //---------------------------------------------------
 
