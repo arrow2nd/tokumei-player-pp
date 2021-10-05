@@ -39,13 +39,13 @@ const Control = ({
         <MdOpenInBrowser />
       </Button>
       <div className="flex mx-4 text-3xl">
-        <Button onClick={onClickPrev}>
+        <Button disabled={isPlaying} onClick={onClickPrev}>
           <MdSkipPrevious />
         </Button>
         <Button onClick={onClickPlay}>
           {isPlaying ? <MdPause /> : <MdPlayArrow />}
         </Button>
-        <Button onClick={onClickNext}>
+        <Button disabled={isPlaying} onClick={onClickNext}>
           <MdSkipNext />
         </Button>
       </div>

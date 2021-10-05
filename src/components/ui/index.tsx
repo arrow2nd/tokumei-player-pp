@@ -33,16 +33,16 @@ const UI = (): JSX.Element => {
 
   // ラジオ名が変更された
   const handlChangeRadio = useCallback(
-    (e: React.ChangeEvent<HTMLSelectElement>) =>
-      setRadioName(e.currentTarget.value),
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
+      setRadioName(e.currentTarget.value)
+    },
     []
   )
 
   // エピソードが変更された
-  const handleChangeEpisode = useCallback(
-    (path: string) => setRadioPath(path),
-    []
-  )
+  const handleChangeEpisode = useCallback((path: string) => {
+    setRadioPath(path)
+  }, [])
 
   // 再生コントロール
   const handleClickPlay = useCallback(() => {
@@ -65,22 +65,19 @@ const UI = (): JSX.Element => {
   }, [currentSrc, isPlaying, pause, play, radioPath, resume])
 
   // 前のエピソード
-  const handleClickPrev = useCallback(
-    () => setRadioPath(getEpisodePath(radioPath, -1)),
-    [getEpisodePath, radioPath]
-  )
+  const handleClickPrev = useCallback(() => {
+    setRadioPath(getEpisodePath(radioPath, -1))
+  }, [getEpisodePath, radioPath])
 
   // 次のエピソード
-  const handleClickNext = useCallback(
-    () => setRadioPath(getEpisodePath(radioPath, 1)),
-    [getEpisodePath, radioPath]
-  )
+  const handleClickNext = useCallback(() => {
+    setRadioPath(getEpisodePath(radioPath, 1))
+  }, [getEpisodePath, radioPath])
 
   // シャッフル切り替え
-  const handleChangeShuffle = useCallback(
-    () => setIsShuffle((prev) => !prev),
-    []
-  )
+  const handleChangeShuffle = useCallback(() => {
+    setIsShuffle((prev) => !prev)
+  }, [])
 
   // 自動再生
   useEffect(() => {
