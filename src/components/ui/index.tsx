@@ -64,6 +64,18 @@ const UI = (): JSX.Element => {
     }
   }, [currentSrc, isPlaying, pause, play, radioPath, resume])
 
+  // 前のエピソード
+  const handleClickPrev = useCallback(
+    () => setRadioPath(getEpisodePath(radioPath, -1)),
+    [getEpisodePath, radioPath]
+  )
+
+  // 次のエピソード
+  const handleClickNext = useCallback(
+    () => setRadioPath(getEpisodePath(radioPath, 1)),
+    [getEpisodePath, radioPath]
+  )
+
   // シャッフル切り替え
   const handleChangeShuffle = useCallback(
     () => setIsShuffle((prev) => !prev),
@@ -110,6 +122,8 @@ const UI = (): JSX.Element => {
         isPlaying={isPlaying}
         isShuffle={isShuffle}
         onClickPlay={handleClickPlay}
+        onClickPrev={handleClickPrev}
+        onClickNext={handleClickNext}
         onChangeShuffle={handleChangeShuffle}
       />
     </>

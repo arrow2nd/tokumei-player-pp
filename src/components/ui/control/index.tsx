@@ -15,6 +15,8 @@ type Props = {
   isPlaying: boolean
   isShuffle: boolean
   onClickPlay: () => void
+  onClickPrev: () => void
+  onClickNext: () => void
   onChangeShuffle: () => void
 }
 
@@ -23,9 +25,11 @@ const Control = ({
   isPlaying,
   isShuffle,
   onClickPlay,
+  onClickPrev,
+  onClickNext,
   onChangeShuffle
 }: Props): JSX.Element => {
-  console.log(`[playing] : ${isPlaying}`)
+  console.log(`[conrol] playing = ${isPlaying}`)
 
   return (
     <div
@@ -35,11 +39,15 @@ const Control = ({
         <MdOpenInBrowser />
       </Button>
       <div className="flex mx-4 text-3xl">
-        <MdSkipPrevious />
+        <Button onClick={onClickPrev}>
+          <MdSkipPrevious />
+        </Button>
         <Button onClick={onClickPlay}>
           {isPlaying ? <MdPause /> : <MdPlayArrow />}
         </Button>
-        <MdSkipNext />
+        <Button onClick={onClickNext}>
+          <MdSkipNext />
+        </Button>
       </div>
       <Button onClick={onChangeShuffle}>
         {isShuffle ? <MdShuffleOn /> : <MdShuffle />}

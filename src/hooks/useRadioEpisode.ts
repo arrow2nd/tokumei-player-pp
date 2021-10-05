@@ -49,8 +49,8 @@ export const useRadioEpisode = (radioName: string): RadioEpisodeType => {
 
       // 添字が範囲外
       if (nextIdx < 0 || nextIdx >= episodeOptions.length) {
-        // 加算数が負なら先頭を、正なら末尾の要素を返す
-        return add < 0
+        // 加算数が正なら末尾、負なら先頭の要素を返す
+        return add > 0
           ? episodeOptions[0].value
           : episodeOptions.slice(-1)[0].value
       }
