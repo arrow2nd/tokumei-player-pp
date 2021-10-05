@@ -5,12 +5,14 @@ type Props = {
   className?: string
   currentSec: number
   durationSec: number
+  onSeek: (sec: number) => void
 }
 
 const Seekbar = ({
   className = '',
   currentSec,
-  durationSec
+  durationSec,
+  onSeek
 }: Props): JSX.Element => {
   const [isDuringSeek, setIsDuringSeek] = useState(false)
   const [seekSec, setSeekSec] = useState(0)
@@ -20,19 +22,19 @@ const Seekbar = ({
 
   // シーク終了
   const handleSeekFinish = () => {
-    // props.onSeek(seekTime)
+    onSeek(seekSec)
     setTimeout(() => setIsDuringSeek(false), 1000)
   }
 
   // シーク中
   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const time = parseFloat(e.currentTarget.value)
-    if (time !== seekSec) setSeekSec(time)
+    const sec = parseFloat(e.currentTarget.value)
+    if (seekSec !== sec) setSeekSec(sec)
   }
 
   return (
     <div className={`flex items-center w-11/12 drag-none ${className}`}>
-      <Time sec={currentSec} />
+      <Time sec={isDuringSeek ? seekSec : currentSec} />
       <input
         className="w-full h-1.5 mx-3 w-appearance-none cursor-pointer bg-gray-300 overflow-hidden outline-none rounded-md"
         type="range"

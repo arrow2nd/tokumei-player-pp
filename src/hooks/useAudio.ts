@@ -1,25 +1,29 @@
 import { useCallback, useEffect, useState } from 'react'
-// import { useForceUpdate } from './useForceUpdate'
 
 type AudioType = [
   isPlaying: boolean,
-  currentTime: number,
+  currentSec: number,
   currentSrc: string,
   play: (src: string) => Promise<number>,
   pause: () => void,
   resume: () => void,
-  setCurrentTime: (time: number) => void,
+  setCurrentSec: (time: number) => void,
   setEndedFunc: (callBack: () => void) => void
 ]
 
 export const useAudio = (): AudioType => {
   const [audioElm] = useState(new Audio())
-  // const forceUpdate = useForceUpdate()
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [currentSec, setCurrentSec] = useState(0)
 
   useEffect(() => {
-    // audioElm.addEventListener('play', forceUpdate)
-    // audioElm.addEventListener('pause', forceUpdate)
-    // audioElm.addEventListener('timeupdate', forceUpdate)
+    const updatePlayingState = () => setIsPlaying(!audioElm.paused)
+    const updateSec = () => setCurrentSec(audioElm.currentTime)
+
+    audioElm.addEventListener('play', updatePlayingState)
+    audioElm.addEventListener('pause', updatePlayingState)
+    audioElm.addEventListener('timeupdate', updateSec)
+
     audioElm.onerror = () => {
       audioElm.pause()
       window.api.errorDialog(
@@ -28,16 +32,17 @@ export const useAudio = (): AudioType => {
       )
     }
 
-    // return () => {
-    //   audioElm.removeEventListener('play', forceUpdate)
-    //   audioElm.removeEventListener('pause', forceUpdate)
-    //   audioElm.removeEventListener('timeupdate', forceUpdate)
-    // }
+    return () => {
+      audioElm.removeEventListener('play', updatePlayingState)
+      audioElm.removeEventListener('pause', updatePlayingState)
+      audioElm.removeEventListener('timeupdate', updateSec)
+    }
   }, [audioElm])
 
+  // 再生コントロール
   const play = useCallback(
-    async (src: string): Promise<number> => {
-      audioElm.src = src
+    async (path: string): Promise<number> => {
+      audioElm.src = `https://omocoro.heteml.net/radio/${path}`
       await audioElm.play()
       return audioElm.duration
     },
@@ -46,8 +51,9 @@ export const useAudio = (): AudioType => {
   const pause = useCallback(() => audioElm.pause(), [audioElm])
   const resume = useCallback(() => audioElm.play(), [audioElm])
 
+  // セッター
   const setCurrentTime = useCallback(
-    (time: number) => (audioElm.currentTime = time),
+    (sec: number) => (audioElm.currentTime = sec),
     [audioElm]
   )
   const setEndedFunc = useCallback(
@@ -56,8 +62,8 @@ export const useAudio = (): AudioType => {
   )
 
   return [
-    !audioElm.paused,
-    audioElm.currentTime,
+    isPlaying,
+    currentSec,
     audioElm.src,
     play,
     pause,

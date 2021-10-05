@@ -7,7 +7,7 @@ type Props = {
   className?: string
   episodeOptions: OptionType[]
   disabled: boolean
-  onChange: (e: ChangeEvent<HTMLSelectElement>) => void
+  onChange: (path: string) => void
 }
 
 const EpisodeSelect = ({
@@ -30,10 +30,15 @@ const EpisodeSelect = ({
     }
   }, [episodeOptions])
 
+  // エピソードの変更を適応
+  useEffect(() => {
+    console.log(`[change] ${selectedValue}`)
+    onChange(selectedValue)
+  }, [onChange, selectedValue])
+
   // 値が変更された
   const handleChangeValue = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedValue(e.currentTarget.value)
-    onChange(e)
   }
 
   return (

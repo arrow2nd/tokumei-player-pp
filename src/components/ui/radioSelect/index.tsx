@@ -8,13 +8,15 @@ type Props = {
   episodeOptions: OptionType[]
   disabled: boolean
   onChangeRadio: (e: React.ChangeEvent<HTMLSelectElement>) => void
+  onChangeEpisode: (path: string) => void
 }
 
 const RadioSelect = ({
   radioOptions,
   episodeOptions,
   disabled,
-  onChangeRadio
+  onChangeRadio,
+  onChangeEpisode
 }: Props): JSX.Element => {
   return (
     <div className="flex flex-col w-9/12 drag-none">
@@ -28,9 +30,7 @@ const RadioSelect = ({
         className="text-xs"
         episodeOptions={episodeOptions}
         disabled={disabled}
-        onChange={(e): void => {
-          console.log(e.currentTarget.value)
-        }}
+        onChange={onChangeEpisode}
       />
     </div>
   )
