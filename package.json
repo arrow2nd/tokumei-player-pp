@@ -1,6 +1,6 @@
 {
-  "name": "electron-ts-react-template",
-  "version": "1.0.0",
+  "name": "tokumei-player-pp",
+  "version": "0.0.0",
   "main": "./build/main.js",
   "private": true,
   "scripts": {
@@ -16,8 +16,8 @@
     "pack:linux": "electron-builder --linux"
   },
   "build": {
-    "appId": "",
-    "productName": "",
+    "appId": "com.arrow2nd.tokumeipp",
+    "productName": "匿名Player++",
     "artifactName": "${name}-${version}.${ext}",
     "files": [
       "./build/**/*"
@@ -27,7 +27,7 @@
     },
     "win": {
       "target": "nsis",
-      "icon": ""
+      "icon": "./src/icons/win.png"
     },
     "nsis": {
       "oneClick": false,
@@ -35,16 +35,16 @@
     },
     "mac": {
       "target": "dmg",
-      "icon": "",
-      "category": ""
+      "icon": "./src/icons/mac.png",
+      "category": "Entertainment"
     },
     "linux": {
       "target": [
         "AppImage",
         "deb"
       ],
-      "icon": "",
-      "category": ""
+      "icon": "./src/icons/linux.png",
+      "category": "Audio"
     },
     "publish": null
   },
@@ -81,6 +81,7 @@
   },
   "dependencies": {
     "@fontsource/m-plus-rounded-1c": "^4.5.0",
+    "axios": "^0.22.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1"
