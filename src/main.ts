@@ -1,15 +1,23 @@
 import { app, BrowserWindow, dialog, ipcMain, Menu, shell } from 'electron'
 import path from 'path'
 
+const size = {
+  width: 550,
+  height: 160
+}
+
 let win: BrowserWindow
 
 const createWindow = (): void => {
   win = new BrowserWindow({
-    width: 550,
-    height: 160,
+    ...size,
+    minWidth: size.width,
+    minHeight: size.height,
+    maxWidth: size.width,
+    maxHeight: size.height,
+    resizable: true, // electron issue : #30788
     frame: false,
     show: false,
-    // resizable: false,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
