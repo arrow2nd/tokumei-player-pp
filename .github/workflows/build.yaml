@@ -56,7 +56,7 @@ jobs:
             |OS|ファイル名|
             |-|-|
             |Windows (インストーラー)|tokumei-player-pp-x.x.x.exe|
+            |macOS|tokumei-player-pp-x.x.x.dmg|
             |Liunx|tokumei-player-pp-x.x.x.AppImage|
-            |Linux (Debian)|tokumei-player-pp-x.x.x.deb|
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
