@@ -7,6 +7,7 @@ type Props = {
   className?: string
   episodeOptions: OptionType[]
   disabled: boolean
+  currentEpisode: string
   onChange: (path: string) => void
 }
 
@@ -14,10 +15,10 @@ const EpisodeSelect = ({
   className = '',
   episodeOptions,
   disabled,
+  currentEpisode,
   onChange
 }: Props): JSX.Element => {
   const [options, setOptions] = useState([] as JSX.Element[])
-  const [selectedValue, setSelectedValue] = useState('')
 
   // エピソードリストを更新
   useEffect(() => {
@@ -26,25 +27,25 @@ const EpisodeSelect = ({
 
     // 最新話をセット
     if (newOptions.length > 0) {
-      setSelectedValue(episodeOptions.slice(-1)[0].value)
+      onChange(episodeOptions.slice(-1)[0].value)
     }
-  }, [episodeOptions])
+  }, [episodeOptions, onChange])
 
   // エピソードの変更を適応
   useEffect(() => {
-    console.log(`[change] ${selectedValue}`)
-    onChange(selectedValue)
-  }, [onChange, selectedValue])
+    console.log(`[change] ${currentEpisode}`)
+    onChange(currentEpisode)
+  }, [currentEpisode, onChange])
 
   // 値が変更された
   const handleChangeValue = (e: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedValue(e.currentTarget.value)
+    onChange(e.currentTarget.value)
   }
 
   return (
     <Select
       className={className}
-      value={selectedValue}
+      value={currentEpisode}
       disabled={disabled}
       options={options}
       onChange={handleChangeValue}

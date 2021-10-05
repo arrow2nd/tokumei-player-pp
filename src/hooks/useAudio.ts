@@ -2,9 +2,10 @@ import { useCallback, useEffect, useState } from 'react'
 
 type AudioType = [
   isPlaying: boolean,
-  currentSec: number,
   currentSrc: string,
-  play: (src: string) => Promise<number>,
+  currentSec: number,
+  durationSec: number,
+  play: (src: string) => void,
   pause: () => void,
   resume: () => void,
   setCurrentSec: (time: number) => void,
@@ -15,6 +16,7 @@ export const useAudio = (): AudioType => {
   const [audioElm] = useState(new Audio())
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentSec, setCurrentSec] = useState(0)
+  const [durationSec, setDurationSec] = useState(0)
 
   useEffect(() => {
     const updatePlayingState = () => setIsPlaying(!audioElm.paused)
@@ -41,10 +43,10 @@ export const useAudio = (): AudioType => {
 
   // 再生コントロール
   const play = useCallback(
-    async (path: string): Promise<number> => {
+    async (path: string) => {
       audioElm.src = `https://omocoro.heteml.net/radio/${path}`
       await audioElm.play()
-      return audioElm.duration
+      setDurationSec(audioElm.duration)
     },
     [audioElm]
   )
@@ -63,8 +65,9 @@ export const useAudio = (): AudioType => {
 
   return [
     isPlaying,
-    currentSec,
     audioElm.src,
+    currentSec,
+    durationSec,
     play,
     pause,
     resume,

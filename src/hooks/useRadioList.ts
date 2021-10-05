@@ -19,6 +19,14 @@ export const useRadioList = (): GroupOptionType[] => {
   useEffect(() => {
     const func = async () => {
       const res = await fetch('https://arrow2nd.github.io/omkr-radio/list.json')
+      if (!res.ok) {
+        window.api.errorDialog(
+          'ラジオ一覧が取得できませんでした',
+          '時間をおいてから再度実行してください'
+        )
+        return
+      }
+
       const json: ListItem[] = await res.json()
 
       setRadioOptions([

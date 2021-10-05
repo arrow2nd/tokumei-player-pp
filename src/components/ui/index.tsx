@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Seekbar from './seekbar'
 import Control from './control'
 import RadioSelect from './radioSelect'
@@ -9,13 +9,13 @@ import { useAudio } from '../../hooks/useAudio'
 const UI = (): JSX.Element => {
   const [radioName, setRadioName] = useState('')
   const [radioPath, setRadioPath] = useState('')
-  const [durationSec, setDurationSec] = useState(0)
   const [isShuffle, setIsShuffle] = useState(false)
 
   const [
     isPlaying,
-    currentSec,
     currentSrc,
+    currentSec,
+    durationSec,
     play,
     pause,
     resume,
@@ -23,13 +23,13 @@ const UI = (): JSX.Element => {
     setEndedFunc
   ] = useAudio()
 
-  // 選択肢
   const radioOptions = useRadioList()
-  const episodeOptions = useRadioEpisode(radioName)
-
   if (radioOptions.length > 0 && radioName === '') {
     setRadioName(radioOptions[0].options[0].label)
   }
+
+  const [episodeOptions, getEpisodePath, getRandomEpisodePath] =
+    useRadioEpisode(radioName)
 
   // ラジオ名が変更された
   const handlChangeRadio = useCallback(
@@ -49,7 +49,7 @@ const UI = (): JSX.Element => {
     switch (true) {
       // 再生
       case !currentSrc.includes(radioPath): {
-        play(radioPath).then((sec) => setDurationSec(sec))
+        play(radioPath)
         break
       }
       // 一時停止
@@ -70,12 +70,32 @@ const UI = (): JSX.Element => {
     []
   )
 
+  // 自動再生
+  useEffect(() => {
+    setEndedFunc(() => {
+      const path = isShuffle
+        ? getRandomEpisodePath()
+        : getEpisodePath(radioPath, 1)
+
+      setRadioPath(path)
+      play(path)
+    })
+  }, [
+    getEpisodePath,
+    getRandomEpisodePath,
+    isShuffle,
+    play,
+    radioPath,
+    setEndedFunc
+  ])
+
   return (
     <>
       <RadioSelect
         radioOptions={radioOptions}
         episodeOptions={episodeOptions}
         disabled={isPlaying}
+        currentEpisode={radioPath}
         onChangeRadio={handlChangeRadio}
         onChangeEpisode={handleChangeEpisode}
       />
