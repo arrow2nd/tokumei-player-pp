@@ -60,8 +60,8 @@ ipcMain.on('win-close', () => win.close())
 ipcMain.on('win-minimize', () => win.minimize())
 
 // サイトを開く
-ipcMain.on('open-website', (_event: Electron.IpcMainEvent, tag: string) => {
-  shell.openExternal(`https://omocoro.jp/tag/${encodeURIComponent(tag)}`)
+ipcMain.on('open-website', (_event: Electron.IpcMainEvent, keyword: string) => {
+  shell.openExternal(`https://omocoro.jp/?s=${encodeURIComponent(keyword)}`)
 })
 
 // 確認ダイアログ

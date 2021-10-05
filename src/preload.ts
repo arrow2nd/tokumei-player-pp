@@ -7,8 +7,8 @@ contextBridge.exposeInMainWorld('api', {
   windowMinimize: () => {
     ipcRenderer.send('win-minimize')
   },
-  openWebSite: (tag: string) => {
-    ipcRenderer.send('open-website', tag)
+  openWebSite: (keyword: string) => {
+    ipcRenderer.send('open-website', keyword)
   },
   infoDialog: async (title: string, content: string): Promise<boolean> => {
     const selected = await ipcRenderer.invoke('info-dialog', title, content)

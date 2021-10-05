@@ -11,6 +11,14 @@ const UI = (): JSX.Element => {
   const [radioPath, setRadioPath] = useState('')
   const [isShuffle, setIsShuffle] = useState(false)
 
+  const radioOptions = useRadioList()
+  if (radioOptions.length > 0 && radioName === '') {
+    setRadioName(radioOptions[0].options[0].label)
+  }
+
+  const [episodeOptions, getEpisodePath, getRandomEpisodePath] =
+    useRadioEpisode(radioName)
+
   const [
     isPlaying,
     currentSrc,
@@ -23,13 +31,24 @@ const UI = (): JSX.Element => {
     setEndedFunc
   ] = useAudio()
 
-  const radioOptions = useRadioList()
-  if (radioOptions.length > 0 && radioName === '') {
-    setRadioName(radioOptions[0].options[0].label)
-  }
+  // 自動再生
+  useEffect(() => {
+    setEndedFunc(() => {
+      const path = isShuffle
+        ? getRandomEpisodePath()
+        : getEpisodePath(radioPath, 1)
 
-  const [episodeOptions, getEpisodePath, getRandomEpisodePath] =
-    useRadioEpisode(radioName)
+      setRadioPath(path)
+      play(path)
+    })
+  }, [
+    getEpisodePath,
+    getRandomEpisodePath,
+    isShuffle,
+    play,
+    radioPath,
+    setEndedFunc
+  ])
 
   // ラジオ名が変更された
   const handlChangeRadio = useCallback(
@@ -79,24 +98,16 @@ const UI = (): JSX.Element => {
     setIsShuffle((prev) => !prev)
   }, [])
 
-  // 自動再生
-  useEffect(() => {
-    setEndedFunc(() => {
-      const path = isShuffle
-        ? getRandomEpisodePath()
-        : getEpisodePath(radioPath, 1)
-
-      setRadioPath(path)
-      play(path)
-    })
-  }, [
-    getEpisodePath,
-    getRandomEpisodePath,
-    isShuffle,
-    play,
-    radioPath,
-    setEndedFunc
-  ])
+  // ブラウザを開く
+  const handleClickOpen = useCallback(async () => {
+    const isOpenWebSite = await window.api.infoDialog(
+      'ブラウザを開きますか？',
+      `オモコロで「${radioName}」の記事を検索します。`
+    )
+    if (isOpenWebSite) {
+      window.api.openWebSite(radioName)
+    }
+  }, [radioName])
 
   return (
     <>
@@ -121,6 +132,7 @@ const UI = (): JSX.Element => {
         onClickPlay={handleClickPlay}
         onClickPrev={handleClickPrev}
         onClickNext={handleClickNext}
+        onClickOpen={handleClickOpen}
         onChangeShuffle={handleChangeShuffle}
       />
     </>

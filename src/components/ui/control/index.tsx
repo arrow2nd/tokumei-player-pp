@@ -17,6 +17,7 @@ type Props = {
   onClickPlay: () => void
   onClickPrev: () => void
   onClickNext: () => void
+  onClickOpen: () => void
   onChangeShuffle: () => void
 }
 
@@ -27,6 +28,7 @@ const Control = ({
   onClickPlay,
   onClickPrev,
   onClickNext,
+  onClickOpen,
   onChangeShuffle
 }: Props): JSX.Element => {
   console.log(`[conrol] playing = ${isPlaying}`)
@@ -35,7 +37,7 @@ const Control = ({
     <div
       className={`flex items-center text-2xl text-black drag-none ${className}`}
     >
-      <Button onClick={() => console.log('open')}>
+      <Button onClick={onClickOpen}>
         <MdOpenInBrowser />
       </Button>
       <div className="flex mx-4 text-3xl">
