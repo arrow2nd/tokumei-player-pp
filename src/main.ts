@@ -107,7 +107,7 @@ ipcMain.handle(
     await dialog.showMessageBox(win, {
       type: 'question',
       buttons: ['はい', 'いいえ'],
-      defaultId: 1,
+      defaultId: 0,
       title: '確認',
       message: title,
       detail: content
