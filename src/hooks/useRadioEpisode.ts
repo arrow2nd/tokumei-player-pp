@@ -16,7 +16,7 @@ export const useRadioEpisode = (radioName: string): RadioEpisodeType => {
 
     const func = async () => {
       const res = await fetch(
-        `https://arrow2nd.com/omkr-radio/data/${radioName}.json`
+        `https://omkr-radio.vercel.app/data/${radioName}.json`
       )
       if (!res.ok) {
         window.api.errorDialog(
