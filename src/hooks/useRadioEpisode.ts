@@ -15,9 +15,7 @@ export const useRadioEpisode = (radioName: string): RadioEpisodeType => {
     if (radioName === '') return
 
     const func = async () => {
-      const res = await fetch(
-        `https://omkr-radio.vercel.app/data/${radioName}.json`
-      )
+      const res = await fetch(`https://omkr-radio.deno.dev/data/${radioName}`)
       if (!res.ok) {
         window.api.errorDialog(
           'エピソード一覧が取得できませんでした',

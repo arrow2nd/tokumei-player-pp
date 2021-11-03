@@ -18,7 +18,7 @@ export const useRadioList = (): GroupOptionType[] => {
 
   useEffect(() => {
     const func = async () => {
-      const res = await fetch('https://omkr-radio.vercel.app/list.json')
+      const res = await fetch('https://omkr-radio.deno.dev/list')
       if (!res.ok) {
         window.api.errorDialog(
           'ラジオ一覧が取得できませんでした',
