@@ -8,18 +8,20 @@ type RadioEpisodeType = [
   getRandomEpisodePath: () => string
 ]
 
-export const useRadioEpisode = (radioName: string): RadioEpisodeType => {
+export const useRadioEpisode = (radioId: string): RadioEpisodeType => {
   const [episodeOptions, setEpisodeOptions] = useState([] as OptionType[])
 
   useEffect(() => {
-    if (radioName === '') return
+    if (radioId === '') return
 
     const func = async () => {
-      const res = await fetch(`https://omkr-radio.deno.dev/data/${radioName}`)
+      const res = await fetch(
+        `https://arrow2nd.com/omkr-radio/data/${radioId}.json`
+      )
       if (!res.ok) {
         window.api.errorDialog(
           'エピソード一覧が取得できませんでした',
-          '時間をおいてから再度実行してください'
+          '時間をおいてから再度起動し直してください'
         )
         return
       }
@@ -37,7 +39,7 @@ export const useRadioEpisode = (radioName: string): RadioEpisodeType => {
     }
 
     func()
-  }, [radioName])
+  }, [radioId])
 
   // 現在のエピソード前後のエピソードを取得
   const getEpisodePath = useCallback(
