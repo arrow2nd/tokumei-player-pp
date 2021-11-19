@@ -8,12 +8,14 @@ import { useAudio } from '../../hooks/useAudio'
 
 const UI = (): JSX.Element => {
   const [radioId, setRadioId] = useState('')
+  const [radioName, setRadioName] = useState('')
   const [radioPath, setRadioPath] = useState('')
   const [isShuffle, setIsShuffle] = useState(false)
 
   const radioOptions = useRadioList()
-  if (radioOptions.length > 0 && radioId === '') {
+  if (radioOptions.length > 0 && radioId === '' && radioName === '') {
     setRadioId(radioOptions[0].options[0].value)
+    setRadioName(radioOptions[0].options[0].label)
   }
 
   const [episodeOptions, getEpisodePath, getRandomEpisodePath] =
@@ -51,8 +53,9 @@ const UI = (): JSX.Element => {
   ])
 
   // ラジオ名が変更された
-  const handlChangeRadio = useCallback((name: string) => {
-    setRadioId(name)
+  const handlChangeRadio = useCallback((id: string, name: string) => {
+    setRadioId(id)
+    setRadioName(name)
   }, [])
 
   // エピソードが変更された
@@ -99,13 +102,13 @@ const UI = (): JSX.Element => {
   const handleClickOpen = useCallback(async () => {
     const isOpenWebSite = await window.api.infoDialog(
       'ブラウザを開きますか？',
-      `オモコロで「${radioId}」の記事を検索します。`
+      `オモコロで「${radioName}」の記事を検索します。`
     )
 
     if (isOpenWebSite) {
-      window.api.openWebSite(radioId)
+      window.api.openWebSite(radioName)
     }
-  }, [radioId])
+  }, [radioName])
 
   return (
     <>

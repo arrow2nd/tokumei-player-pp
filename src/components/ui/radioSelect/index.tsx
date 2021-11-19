@@ -8,7 +8,7 @@ type Props = {
   episodeOptions: OptionType[]
   disabled: boolean
   currentEpisode: string
-  onChangeRadio: (name: string) => void
+  onChangeRadio: (id: string, name: string) => void
   onChangeEpisode: (path: string) => void
 }
 

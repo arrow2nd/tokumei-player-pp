@@ -7,7 +7,7 @@ type Props = {
   className?: string
   radioOptions: GroupOptionType[]
   disabled: boolean
-  onChange: (name: string) => void
+  onChange: (id: string, name: string) => void
 }
 
 const RadioNameSelect = ({
@@ -27,7 +27,9 @@ const RadioNameSelect = ({
   )
 
   const handleChangeValue = (e: ChangeEvent<HTMLSelectElement>) => {
-    onChange(e.currentTarget.value)
+    const idx = e.currentTarget.selectedIndex
+    const radioName = e.currentTarget.innerText.split('\n')[idx]
+    onChange(e.currentTarget.value, radioName)
   }
 
   return (
