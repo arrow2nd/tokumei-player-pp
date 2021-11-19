@@ -8,7 +8,7 @@ function createOptions(items: ListItem[], onAir: boolean): OptionType[] {
     .map(
       (e): OptionType => ({
         label: e.name,
-        value: e.name
+        value: e.id
       })
     )
 }
@@ -18,11 +18,11 @@ export const useRadioList = (): GroupOptionType[] => {
 
   useEffect(() => {
     const func = async () => {
-      const res = await fetch('https://omkr-radio.deno.dev/list')
+      const res = await fetch('https://arrow2nd.com/omkr-radio/list.json')
       if (!res.ok) {
         window.api.errorDialog(
           'ラジオ一覧が取得できませんでした',
-          '時間をおいてから再度実行してください'
+          '時間をおいてから再度起動し直してください'
         )
         return
       }
