@@ -16,7 +16,7 @@ export const useRadioEpisode = (radioId: string): RadioEpisodeType => {
 
     const func = async () => {
       const res = await fetch(
-        `https://arrow2nd.com/omkr-radio/data/${radioId}.json`
+        `https://arrow2nd.github.io/omkr-radio/data/${radioId}.json`
       )
       if (!res.ok) {
         window.api.errorDialog(
