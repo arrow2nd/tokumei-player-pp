@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { truncate } from '../../../../scripts/util'
 import { OptionType } from '../../../../types/option'
 

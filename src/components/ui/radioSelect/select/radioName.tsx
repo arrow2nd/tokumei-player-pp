@@ -1,6 +1,7 @@
-import React, { useMemo, ChangeEvent } from 'react'
-import Select from '../../../common/select'
+import React, { ChangeEvent, useMemo } from 'react'
+
 import { GroupOptionType } from '../../../../types/option'
+import Select from '../../../common/select'
 import { createOptions } from './createOptions'
 
 type Props = {

@@ -1,6 +1,7 @@
-import React, { useState, ChangeEvent, useEffect } from 'react'
-import Select from '../../../common/select'
+import React, { ChangeEvent, useEffect, useState } from 'react'
+
 import { OptionType } from '../../../../types/option'
+import Select from '../../../common/select'
 import { createOptions } from './createOptions'
 
 type Props = {

@@ -1,7 +1,8 @@
 import React from 'react'
-import RadioNameSelect from './select/radioName'
-import EpisodeSelect from './select/episode'
+
 import { GroupOptionType, OptionType } from '../../../types/option'
+import EpisodeSelect from './select/episode'
+import RadioNameSelect from './select/radioName'
 
 type Props = {
   radioOptions: GroupOptionType[]
