@@ -1,5 +1,14 @@
+import {
+  BrowserWindow,
+  Menu,
+  app,
+  dialog,
+  ipcMain,
+  session,
+  shell
+} from 'electron'
 import path from 'path'
-import { app, BrowserWindow, dialog, ipcMain, Menu, shell } from 'electron'
+
 import { checkUpdate } from './scripts/checkUpdate'
 
 const size = {
@@ -33,6 +42,12 @@ const createWindow = (): void => {
 
   // 表示可能になったら表示する
   win.once('ready-to-show', () => win.show())
+
+  // 終了時にキャッシュを削除する
+  win.on('closed', () => {
+    session.defaultSession.clearCache()
+    session.defaultSession.clearHostResolverCache()
+  })
 
   // メニューを無効化
   Menu.setApplicationMenu(null)

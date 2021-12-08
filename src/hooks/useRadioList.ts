@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+
 import { GroupOptionType, OptionType } from '../types/option'
 import { ListItem } from '../types/radioData'
 

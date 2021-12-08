@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import Seekbar from './seekbar'
+
+import { useAudio } from '../../hooks/useAudio'
+import { useRadioEpisode } from '../../hooks/useRadioEpisode'
+import { useRadioList } from '../../hooks/useRadioList'
 import Control from './control'
 import RadioSelect from './radioSelect'
-import { useRadioList } from '../../hooks/useRadioList'
-import { useRadioEpisode } from '../../hooks/useRadioEpisode'
-import { useAudio } from '../../hooks/useAudio'
+import Seekbar from './seekbar'
 
 const UI = (): JSX.Element => {
   const [radioId, setRadioId] = useState('')

@@ -1,9 +1,9 @@
-import { Configuration, DefinePlugin } from 'webpack'
-import path from 'path'
-import TailwindCss from 'tailwindcss'
 import Autoprefixer from 'autoprefixer'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import path from 'path'
+import TailwindCss from 'tailwindcss'
+import { Configuration, DefinePlugin } from 'webpack'
 
 const isDevelop = process.env.NODE_ENV === 'development'
 

@@ -1,14 +1,15 @@
 import React from 'react'
-import Button from '../../common/button'
 import {
   MdOpenInBrowser,
-  MdSkipPrevious,
-  MdSkipNext,
+  MdPause,
   MdPlayArrow,
   MdShuffle,
   MdShuffleOn,
-  MdPause
+  MdSkipNext,
+  MdSkipPrevious
 } from 'react-icons/md'
+
+import Button from '../../common/button'
 
 type Props = {
   className?: string

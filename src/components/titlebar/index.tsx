@@ -1,6 +1,7 @@
 import React from 'react'
-import Button from '../common/button'
 import { MdClose, MdMinimize } from 'react-icons/md'
+
+import Button from '../common/button'
 
 const Titlebar = (): JSX.Element => {
   const handleMinimizeClick = () => window.api.windowMinimize()
