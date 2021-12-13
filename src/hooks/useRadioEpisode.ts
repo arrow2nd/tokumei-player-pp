@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
 
+import { API_BASE_URL } from '../data/constants'
 import { OptionType } from '../types/option'
 import { RadioData } from '../types/radioData'
+import { fetchTimeout } from './util'
 
 type RadioEpisodeType = [
   episodeOptions: OptionType[],
@@ -16,16 +18,15 @@ export const useRadioEpisode = (radioId: string): RadioEpisodeType => {
     if (radioId === '') return
 
     const func = async () => {
-      const res = await fetch(
-        `https://arrow2nd.github.io/omkr-radio/data/${radioId}.json`
-      )
-      if (!res.ok) {
+      const res = await fetchTimeout(
+        API_BASE_URL + `data/${radioId}.json`
+      ).catch(() => {
         window.api.errorDialog(
           'エピソード一覧が取得できませんでした',
           '時間をおいてから再度起動し直してください'
         )
-        return
-      }
+      })
+      if (!res) return
 
       const json: RadioData = await res.json()
 

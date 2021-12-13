@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 
+import { OMOKORO_RADIO_BASE_URL } from '../data/constants'
+
 type AudioType = [
   isPlaying: boolean,
   currentSrc: string,
@@ -44,7 +46,7 @@ export const useAudio = (): AudioType => {
   // 再生コントロール
   const play = useCallback(
     async (path: string) => {
-      audioElm.src = `https://omocoro.heteml.net/radio/${path}`
+      audioElm.src = OMOKORO_RADIO_BASE_URL + path
       await audioElm.play()
 
       setDurationSec(audioElm.duration)
