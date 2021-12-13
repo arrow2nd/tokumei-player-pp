@@ -9,6 +9,7 @@ import {
 } from 'electron'
 import path from 'path'
 
+import { OMOKORO_SITE_BASE_URL } from './data/constants'
 import { checkUpdate } from './scripts/checkUpdate'
 
 const size = {
@@ -108,7 +109,9 @@ ipcMain.on('win-minimize', () => win.minimize())
 
 // サイトを開く
 ipcMain.on('open-website', (_event: Electron.IpcMainEvent, keyword: string) => {
-  shell.openExternal(`https://omocoro.jp/?s=${encodeURIComponent(keyword)}`)
+  shell.openExternal(
+    OMOKORO_SITE_BASE_URL + `?s=${encodeURIComponent(keyword)}`
+  )
 })
 
 // 確認ダイアログ

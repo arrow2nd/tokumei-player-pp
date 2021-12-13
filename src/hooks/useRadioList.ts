@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 
+import { API_BASE_URL } from '../data/constants'
 import { GroupOptionType, OptionType } from '../types/option'
 import { ListItem } from '../types/radioData'
+import { fetchTimeout } from './util'
 
 function createOptions(items: ListItem[], onAir: boolean): OptionType[] {
   return items
@@ -19,14 +21,13 @@ export const useRadioList = (): GroupOptionType[] => {
 
   useEffect(() => {
     const func = async () => {
-      const res = await fetch('https://arrow2nd.github.io/omkr-radio/list.json')
-      if (!res.ok) {
+      const res = await fetchTimeout(API_BASE_URL + 'list.json').catch(() => {
         window.api.errorDialog(
           'ラジオ一覧が取得できませんでした',
           '時間をおいてから再度起動し直してください'
         )
-        return
-      }
+      })
+      if (!res) return
 
       const json: ListItem[] = await res.json()
 
