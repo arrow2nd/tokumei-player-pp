@@ -52,7 +52,10 @@ const base: Configuration = {
   resolve: {
     extensions: ['.js', '.ts', '.tsx', 'json']
   },
-  devtool: isDevelop ? 'inline-source-map' : false
+  devtool: isDevelop ? 'inline-source-map' : false,
+  performance: {
+    maxEntrypointSize: 300000
+  }
 }
 
 // main.ts

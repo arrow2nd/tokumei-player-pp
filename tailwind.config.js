@@ -2,8 +2,7 @@
 const plugin = require('tailwindcss/plugin')
 
 module.exports = {
-  purge: ['./src/components/**/*.{js,ts,jsx,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+  content: ['./src/components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       fontFamily: {
@@ -13,9 +12,6 @@ module.exports = {
         xxs: ['.65rem', '1rem']
       }
     }
-  },
-  variants: {
-    extend: {}
   },
   plugins: [
     plugin(function ({ addUtilities }) {
