@@ -1,16 +1,16 @@
 import React from 'react'
 
-import { GroupOptionType, OptionType } from '../../../types/option'
+import { Option, OptionGroup } from '../../../types/option'
 import EpisodeSelect from './select/episode'
 import RadioNameSelect from './select/radioName'
 
 type Props = {
-  radioOptions: GroupOptionType[]
-  episodeOptions: OptionType[]
+  radioOptions: OptionGroup[]
+  episodeOptions: Option[]
   disabled: boolean
   currentEpisode: string
-  onChangeRadio: (id: string, name: string) => void
-  onChangeEpisode: (path: string) => void
+  onChangeRadio: (current: Option) => void
+  onChangeEpisode: (current: Option) => void
 }
 
 const RadioSelect = ({

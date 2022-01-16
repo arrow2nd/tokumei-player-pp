@@ -31,9 +31,14 @@ const Control = ({
   onClickNext,
   onClickOpen,
   onChangeShuffle
-}: Props): JSX.Element => {
-  const PlayControlButtons = () => (
-    <>
+}: Props): JSX.Element => (
+  <div
+    className={`flex items-center text-2xl text-black drag-none ${className}`}
+  >
+    <Button onClick={onClickOpen}>
+      <MdOpenInBrowser />
+    </Button>
+    <div className="flex mx-4 text-3xl">
       <Button disabled={isPlaying} onClick={onClickPrev}>
         <MdSkipPrevious />
       </Button>
@@ -43,24 +48,11 @@ const Control = ({
       <Button disabled={isPlaying} onClick={onClickNext}>
         <MdSkipNext />
       </Button>
-    </>
-  )
-
-  return (
-    <div
-      className={`flex items-center text-2xl text-black drag-none ${className}`}
-    >
-      <Button onClick={onClickOpen}>
-        <MdOpenInBrowser />
-      </Button>
-      <div className="flex mx-4 text-3xl">
-        <PlayControlButtons />
-      </div>
-      <Button onClick={onChangeShuffle}>
-        {isShuffle ? <MdShuffleOn /> : <MdShuffle />}
-      </Button>
     </div>
-  )
-}
+    <Button onClick={onChangeShuffle}>
+      {isShuffle ? <MdShuffleOn /> : <MdShuffle />}
+    </Button>
+  </div>
+)
 
 export default React.memo(Control)

@@ -1,15 +1,15 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-import { OptionType } from '../../../../types/option'
+import { Option } from '../../../../types/option'
 import Select from '../../../common/select'
 import { createOptions } from './createOptions'
 
 type Props = {
   className?: string
-  episodeOptions: OptionType[]
+  episodeOptions: Option[]
   disabled: boolean
   currentEpisode: string
-  onChange: (path: string) => void
+  onChange: (current: Option) => void
 }
 
 const EpisodeSelect = ({
@@ -23,19 +23,14 @@ const EpisodeSelect = ({
 
   // エピソードリストを更新
   useEffect(() => {
-    const newOptions = createOptions(episodeOptions, 35)
-
+    const newOptions = createOptions(episodeOptions)
     setOptions(newOptions)
 
     // 最新話をセット
     if (newOptions.length > 0) {
-      onChange(episodeOptions.slice(-1)[0].value)
+      onChange(episodeOptions.slice(-1)[0])
     }
   }, [episodeOptions, onChange])
-
-  const handleChangeValue = (e: ChangeEvent<HTMLSelectElement>) => {
-    onChange(e.currentTarget.value)
-  }
 
   return (
     <Select
@@ -43,7 +38,7 @@ const EpisodeSelect = ({
       value={currentEpisode}
       disabled={disabled}
       options={options}
-      onChange={handleChangeValue}
+      onChange={onChange}
     />
   )
 }

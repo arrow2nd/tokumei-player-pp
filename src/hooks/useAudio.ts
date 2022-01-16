@@ -7,7 +7,7 @@ type AudioType = [
   currentSrc: string,
   currentSec: number,
   durationSec: number,
-  play: (src: string) => void,
+  play: (path: string) => void,
   pause: () => void,
   resume: () => void,
   setCurrentSec: (time: number) => void,
@@ -49,6 +49,7 @@ export const useAudio = (): AudioType => {
       audioElm.src = OMOKORO_RADIO_BASE_URL + path
       await audioElm.play()
 
+      // 再生時間
       setDurationSec(audioElm.duration)
     },
     [audioElm]
@@ -58,7 +59,6 @@ export const useAudio = (): AudioType => {
 
   const resume = useCallback(() => audioElm.play(), [audioElm])
 
-  // セッター
   const setCurrentTime = useCallback(
     (sec: number) => (audioElm.currentTime = sec),
     [audioElm]
