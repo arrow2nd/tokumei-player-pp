@@ -86,7 +86,6 @@
   "dependencies": {
     "@fontsource/m-plus-rounded-1c": "^4.5.0",
     "axios": "^0.24.0",
-    "node": "^17.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1"

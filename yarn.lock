@@ -4661,13 +4661,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-bin-setup@npm:^1.0.0":
-  version: 1.1.0
-  resolution: "node-bin-setup@npm:1.1.0"
-  checksum: 15d64487257e282e8878cee35742f43a54e99d6b5dad5b3c84cf4881705c1ee98a962e25ac56427ff72edd1d223cbd6918325e7e6ca7c7d086e7fbde3b97c335
-  languageName: node
-  linkType: hard
-
 "node-gyp@npm:latest":
   version: 8.4.1
   resolution: "node-gyp@npm:8.4.1"
@@ -4692,17 +4685,6 @@ __metadata:
   version: 2.0.1
   resolution: "node-releases@npm:2.0.1"
   checksum: b20dd8d4bced11f75060f0387e05e76b9dc4a0451f7bb3516eade6f50499ea7768ba95d8a60d520c193402df1e58cb3fe301510cc1c1ad68949c3d57b5149866
-  languageName: node
-  linkType: hard
-
-"node@npm:^17.3.1":
-  version: 17.3.1
-  resolution: "node@npm:17.3.1"
-  dependencies:
-    node-bin-setup: ^1.0.0
-  bin:
-    node: bin/node
-  checksum: ec5762e97b5a6f22a2b10a703362cce74e9021aaf2a14dc7c957d211a000e1d96bb5bdfb0c21c6e94f005525698a5c9fa31ac3ebe8d560bde5688b4b9a875121
   languageName: node
   linkType: hard
 
@@ -6388,7 +6370,6 @@ __metadata:
     eslint-plugin-react-hooks: ^4.3.0
     html-webpack-plugin: ^5.5.0
     mini-css-extract-plugin: ^2.5.0
-    node: ^17.3.1
     npm-run-all: ^4.1.5
     postcss: ^8.4.5
     postcss-loader: ^6.2.1
