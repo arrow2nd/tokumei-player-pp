@@ -3,24 +3,23 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { useAudio } from '../../hooks/useAudio'
 import { useRadioEpisode } from '../../hooks/useRadioEpisode'
 import { useRadioList } from '../../hooks/useRadioList'
+import { Option } from '../../types/option'
 import Control from './control'
 import RadioSelect from './radioSelect'
 import Seekbar from './seekbar'
 
 const UI = (): JSX.Element => {
-  const [radioId, setRadioId] = useState('')
-  const [radioName, setRadioName] = useState('')
-  const [radioPath, setRadioPath] = useState('')
+  const [currentRadio, setCurrentRadio] = useState({} as Option)
+  const [currentEpisode, setCurrentEpisode] = useState({} as Option)
   const [isShuffle, setIsShuffle] = useState(false)
 
   const radioOptions = useRadioList()
-  if (radioOptions.length > 0 && radioId === '' && radioName === '') {
-    setRadioId(radioOptions[0].options[0].value)
-    setRadioName(radioOptions[0].options[0].label)
+  if (radioOptions.length > 0 && !currentRadio.label && !currentRadio.value) {
+    setCurrentRadio(radioOptions[0].options[0])
   }
 
   const [episodeOptions, getEpisodePath, getRandomEpisodePath] =
-    useRadioEpisode(radioId)
+    useRadioEpisode(currentRadio.value || '')
 
   const [
     isPlaying,
@@ -34,65 +33,67 @@ const UI = (): JSX.Element => {
     setEndedFunc
   ] = useAudio()
 
+  // 再生
+  const playEpisode = useCallback(
+    ({ label, value }: Option) => {
+      document.title = label
+      play(value)
+    },
+    [play]
+  )
+
   // 自動再生
   useEffect(() => {
     setEndedFunc(() => {
-      const path = isShuffle
+      const nextEpisode = isShuffle
         ? getRandomEpisodePath()
-        : getEpisodePath(radioPath, 1)
+        : getEpisodePath(currentEpisode.value, 1)
 
-      setRadioPath(path)
-      play(path)
+      setCurrentEpisode(nextEpisode)
+      playEpisode(nextEpisode)
     })
   }, [
+    currentEpisode.value,
     getEpisodePath,
     getRandomEpisodePath,
     isShuffle,
-    play,
-    radioPath,
+    playEpisode,
     setEndedFunc
   ])
 
   // ラジオ名が変更された
-  const handlChangeRadio = useCallback((id: string, name: string) => {
-    setRadioId(id)
-    setRadioName(name)
+  const handlChangeRadio = useCallback((current: Option) => {
+    setCurrentRadio(current)
   }, [])
 
   // エピソードが変更された
-  const handleChangeEpisode = useCallback((path: string) => {
-    setRadioPath(path)
+  const handleChangeEpisode = useCallback((current: Option) => {
+    setCurrentEpisode(current)
   }, [])
 
   // 再生コントロール
   const handleClickPlay = useCallback(() => {
-    switch (true) {
+    if (!currentSrc.includes(currentEpisode.value)) {
       // 再生
-      case !currentSrc.includes(radioPath): {
-        play(radioPath)
-        break
-      }
+      playEpisode(currentEpisode)
+    } else if (isPlaying) {
       // 一時停止
-      case isPlaying: {
-        pause()
-        break
-      }
+      pause()
+    } else {
       // 再開
-      default: {
-        resume()
-      }
+      resume()
     }
-  }, [currentSrc, isPlaying, pause, play, radioPath, resume])
+  }, [currentEpisode, currentSrc, isPlaying, pause, playEpisode, resume])
 
   // 前のエピソード
   const handleClickPrev = useCallback(() => {
-    setRadioPath(getEpisodePath(radioPath, -1))
-  }, [getEpisodePath, radioPath])
+    setCurrentEpisode(getEpisodePath(currentEpisode.value, -1))
+  }, [currentEpisode.value, getEpisodePath])
 
   // 次のエピソード
   const handleClickNext = useCallback(() => {
-    setRadioPath(getEpisodePath(radioPath, 1))
-  }, [getEpisodePath, radioPath])
+    setCurrentEpisode(getEpisodePath(currentEpisode.value, 1))
+  }, [currentEpisode.value, getEpisodePath])
 
   // シャッフル切り替え
   const handleChangeShuffle = useCallback(() => {
@@ -101,6 +102,7 @@ const UI = (): JSX.Element => {
 
   // ブラウザを開く
   const handleClickOpen = useCallback(async () => {
+    const radioName = currentRadio.label
     const isOpenWebSite = await window.api.infoDialog(
       'ブラウザを開きますか？',
       `オモコロで「${radioName}」の記事を検索します。`
@@ -109,7 +111,7 @@ const UI = (): JSX.Element => {
     if (isOpenWebSite) {
       window.api.openWebSite(radioName)
     }
-  }, [radioName])
+  }, [currentRadio.label])
 
   return (
     <>
@@ -117,7 +119,7 @@ const UI = (): JSX.Element => {
         radioOptions={radioOptions}
         episodeOptions={episodeOptions}
         disabled={isPlaying}
-        currentEpisode={radioPath}
+        currentEpisode={currentEpisode.value}
         onChangeRadio={handlChangeRadio}
         onChangeEpisode={handleChangeEpisode}
       />

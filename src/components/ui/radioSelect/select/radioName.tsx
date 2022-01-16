@@ -1,14 +1,14 @@
-import React, { ChangeEvent, useMemo } from 'react'
+import React, { useMemo } from 'react'
 
-import { GroupOptionType } from '../../../../types/option'
+import { Option, OptionGroup } from '../../../../types/option'
 import Select from '../../../common/select'
 import { createOptions } from './createOptions'
 
 type Props = {
   className?: string
-  radioOptions: GroupOptionType[]
+  radioOptions: OptionGroup[]
   disabled: boolean
-  onChange: (id: string, name: string) => void
+  onChange: (current: Option) => void
 }
 
 const RadioNameSelect = ({
@@ -21,24 +21,18 @@ const RadioNameSelect = ({
     () =>
       radioOptions.map((e) => (
         <optgroup className="font-sans" key={e.label} label={e.label}>
-          {createOptions(e.options, 40)}
+          {createOptions(e.options)}
         </optgroup>
       )),
     [radioOptions]
   )
-
-  const handleChangeValue = (e: ChangeEvent<HTMLSelectElement>) => {
-    const idx = e.currentTarget.selectedIndex
-    const radioName = e.currentTarget.innerText.split('\n')[idx]
-    onChange(e.currentTarget.value, radioName)
-  }
 
   return (
     <Select
       className={className}
       disabled={disabled}
       options={optGroups}
-      onChange={handleChangeValue}
+      onChange={onChange}
     />
   )
 }

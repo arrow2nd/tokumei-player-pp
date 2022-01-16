@@ -10,7 +10,7 @@ import {
 import path from 'path'
 
 import { OMOKORO_SITE_BASE_URL } from './data/constants'
-import { checkUpdate } from './scripts/checkUpdate'
+import { checkUpdate } from './libs/checkUpdate'
 
 const size = {
   width: 550,

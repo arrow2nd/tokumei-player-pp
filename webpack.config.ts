@@ -54,7 +54,8 @@ const base: Configuration = {
   },
   devtool: isDevelop ? 'inline-source-map' : false,
   performance: {
-    maxEntrypointSize: 300000
+    maxEntrypointSize: 300000,
+    maxAssetSize: 15000000
   }
 }
 

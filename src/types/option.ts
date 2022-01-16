@@ -1,9 +1,9 @@
-export type GroupOptionType = {
+export type OptionGroup = {
   label: string
-  options: OptionType[]
+  options: Option[]
 }
 
-export type OptionType = {
+export type Option = {
   label: string
   value: string
 }

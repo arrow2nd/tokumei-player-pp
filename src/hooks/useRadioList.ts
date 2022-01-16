@@ -1,23 +1,23 @@
 import { useEffect, useState } from 'react'
 
 import { API_BASE_URL } from '../data/constants'
-import { GroupOptionType, OptionType } from '../types/option'
+import { Option, OptionGroup } from '../types/option'
 import { ListItem } from '../types/radioData'
 import { fetchTimeout } from './util'
 
-function createOptions(items: ListItem[], onAir: boolean): OptionType[] {
+function createOptions(items: ListItem[], onAir: boolean): Option[] {
   return items
     .filter((e) => e.onAir === onAir)
     .map(
-      (e): OptionType => ({
+      (e): Option => ({
         label: e.name,
         value: e.id
       })
     )
 }
 
-export const useRadioList = (): GroupOptionType[] => {
-  const [radioOptions, setRadioOptions] = useState([] as GroupOptionType[])
+export const useRadioList = (): OptionGroup[] => {
+  const [radioOptions, setRadioOptions] = useState([] as OptionGroup[])
 
   useEffect(() => {
     const func = async () => {
