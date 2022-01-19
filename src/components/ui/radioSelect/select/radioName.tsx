@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 
 import { Option, OptionGroup } from '../../../../types/option'
+
 import Select from '../../../common/select'
 import { createOptions } from './createOptions'
 

@@ -9,8 +9,9 @@ import {
 } from 'electron'
 import path from 'path'
 
-import { OMOKORO_SITE_BASE_URL } from './data/constants'
 import { checkUpdate } from './libs/checkUpdate'
+
+import { OMOKORO_SITE_BASE_URL } from './data/constants'
 
 const size = {
   width: 550,

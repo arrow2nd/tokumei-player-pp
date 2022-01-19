@@ -3,7 +3,9 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { useAudio } from '../../hooks/useAudio'
 import { useRadioEpisode } from '../../hooks/useRadioEpisode'
 import { useRadioList } from '../../hooks/useRadioList'
+
 import { Option } from '../../types/option'
+
 import Control from './control'
 import RadioSelect from './radioSelect'
 import Seekbar from './seekbar'
