@@ -3,7 +3,9 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { useAudio } from '../../hooks/useAudio'
 import { useRadioEpisode } from '../../hooks/useRadioEpisode'
 import { useRadioList } from '../../hooks/useRadioList'
+
 import { Option } from '../../types/option'
+
 import Control from './control'
 import RadioSelect from './radioSelect'
 import Seekbar from './seekbar'
@@ -36,7 +38,7 @@ const UI = (): JSX.Element => {
   // 再生
   const playEpisode = useCallback(
     ({ label, value }: Option) => {
-      document.title = label
+      document.title = label // タイトルにエピソード名を設定
       play(value)
     },
     [play]
@@ -45,10 +47,12 @@ const UI = (): JSX.Element => {
   // 自動再生
   useEffect(() => {
     setEndedFunc(() => {
+      // シャッフル再生が有効ならランダムで取得
       const nextEpisode = isShuffle
         ? getRandomEpisodePath()
         : getEpisodePath(currentEpisode.value, 1)
 
+      // カレントに設定して再生
       setCurrentEpisode(nextEpisode)
       playEpisode(nextEpisode)
     })
@@ -100,18 +104,23 @@ const UI = (): JSX.Element => {
     setIsShuffle((prev) => !prev)
   }, [])
 
-  // ブラウザを開く
+  // ブラウザを開いて記事を検索
   const handleClickOpen = useCallback(async () => {
-    const radioName = currentRadio.label
+    // ラベル内のエピソード番号を削除
+    const episodeTitle = currentEpisode.label.replace(/^#\d+\s:\s/, '')
+    const keyword = `${currentRadio.label} ${episodeTitle}`
+
+    // ダイアログを開く
     const isOpenWebSite = await window.api.infoDialog(
       'ブラウザを開きますか？',
-      `オモコロで「${radioName}」の記事を検索します。`
+      `「${keyword}」の記事を検索します。`
     )
 
+    // ブラウザを起動
     if (isOpenWebSite) {
-      window.api.openWebSite(radioName)
+      window.api.openWebSite(keyword)
     }
-  }, [currentRadio.label])
+  }, [currentEpisode.label, currentRadio.label])
 
   return (
     <>

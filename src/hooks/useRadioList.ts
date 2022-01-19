@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 
 import { API_BASE_URL } from '../data/constants'
+
 import { Option, OptionGroup } from '../types/option'
 import { ListItem } from '../types/radioData'
+
 import { fetchTimeout } from './util'
 
 function createOptions(items: ListItem[], onAir: boolean): Option[] {

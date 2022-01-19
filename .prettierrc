@@ -7,7 +7,16 @@
   "trailingComma": "none",
   "bracketSpacing": true,
   "arrowParens": "always",
-  "importOrder": ["<THIRD_PARTY_MODULES>", "^[./]"],
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "compornents",
+    "hooks",
+    "libs",
+    "data",
+    "types",
+    "style",
+    "^[./]"
+  ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true
 }

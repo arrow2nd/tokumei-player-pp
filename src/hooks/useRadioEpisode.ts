@@ -1,8 +1,10 @@
 import { useCallback, useEffect, useState } from 'react'
 
 import { API_BASE_URL } from '../data/constants'
+
 import { Option } from '../types/option'
 import { RadioData } from '../types/radioData'
+
 import { fetchTimeout } from './util'
 
 type RadioEpisodeType = [
