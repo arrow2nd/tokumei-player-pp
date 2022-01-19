@@ -14,6 +14,9 @@ jobs:
         os: [windows-latest, ubuntu-latest, macos-latest]
 
     steps:
+      - name: Set environment variables
+        run: echo "VERSION=${GITHUB_REF##*v/}" >> $GITHUB_ENV
+
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -52,11 +55,13 @@ jobs:
         with:
           files: dist/**
           body: |
-            ## ファイル
+            ## ⚠️ 注意
+            ダウンロードされる前に **必ず** [免責事項](https://github.com/${{ github.repository }}/blob/main/README.md#-免責事項) をお読みください。
+            ## 🗂 ファイルについて
             |OS|ファイル名|
             |-|-|
-            |Windows (インストーラー)|tokumei-player-pp-x.x.x.exe|
-            |macOS|tokumei-player-pp-x.x.x.dmg|
-            |Liunx|tokumei-player-pp-x.x.x.AppImage|
+            |Windows (インストーラー)|tokumei-player-pp-${{ env.VERSION }}.exe|
+            |macOS|tokumei-player-pp-${{ env.VERSION }}.dmg|
+            |Liunx|tokumei-player-pp-${{ env.VERSION }}.AppImage|
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
