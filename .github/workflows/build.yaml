@@ -71,7 +71,7 @@ jobs:
             ## 🗂 ファイルについて
             |OS|ファイル名|
             |-|-|
-            |Windows (インストーラー)|tokumei-player-pp-${{ env.VERSION }}.exe|
+            |Windows|tokumei-player-pp-${{ env.VERSION }}.exe|
             |macOS|tokumei-player-pp-${{ env.VERSION }}.dmg|
             |Liunx|tokumei-player-pp-${{ env.VERSION }}.AppImage|
         env:
