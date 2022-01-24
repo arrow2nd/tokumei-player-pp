@@ -92,6 +92,7 @@ const openDownloadPage = (url: string | undefined) => {
 
   if (result === 0) {
     shell.openExternal(url)
+    app.quit()
   }
 }
 
