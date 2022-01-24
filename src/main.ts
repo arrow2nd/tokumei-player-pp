@@ -24,10 +24,10 @@ const createWindow = (): void => {
     show: false,
     resizable: false,
     maximizable: false,
-    titleBarStyle: 'hidden',
-    titleBarOverlay: {
-      color: '#fff'
-    },
+    // titleBarStyle: 'hidden',
+    // titleBarOverlay: {
+    //   color: '#fff'
+    // },
 
     webPreferences: {
       // devTools: false,
