@@ -30,13 +30,13 @@ const createWindow = (): void => {
     // },
 
     webPreferences: {
-      // devTools: false,
+      devTools: false,
       preload: path.join(__dirname, 'preload.js')
     }
   })
 
   win.loadFile('./build/index.html')
-  win.webContents.openDevTools()
+  // win.webContents.openDevTools()
 
   // 表示可能になったら表示する
   win.once('ready-to-show', () => win.show())
