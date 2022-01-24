@@ -2,7 +2,8 @@
 const plugin = require('tailwindcss/plugin')
 
 module.exports = {
-  content: ['./src/components/**/*.{js,ts,jsx,tsx}'],
+  content: ['./src/components/**/*.{ts,tsx}'],
+  safelist: ['right-0', 'left-0'],
   theme: {
     extend: {
       fontFamily: {
