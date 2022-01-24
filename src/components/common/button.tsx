@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react'
 
 type Props = {
   className?: string
+  title?: string
   disabled?: boolean
   onClick: () => void
   children: ReactNode
@@ -9,6 +10,7 @@ type Props = {
 
 const Button = ({
   className = '',
+  title = '',
   disabled,
   onClick,
   children
@@ -17,6 +19,7 @@ const Button = ({
     className={`border-none outline-none ${
       disabled ? 'cursor-not-allowed' : ''
     } ${className}`}
+    title={title}
     disabled={disabled}
     onClick={onClick}
   >

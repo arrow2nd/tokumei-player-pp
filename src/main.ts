@@ -13,27 +13,23 @@ import { checkUpdate } from './libs/checkUpdate'
 
 import { OMOKORO_SITE_BASE_URL } from './data/constants'
 
-const size = {
-  width: 550,
-  height: 160
-}
-
 let win: BrowserWindow
 
 const createWindow = (): void => {
   win = new BrowserWindow({
     title: '匿名Player++',
-    ...size,
-    minWidth: size.width,
-    minHeight: size.height,
-    maxWidth: size.width,
-    maxHeight: size.height,
-    resizable: true, // electron issue : #30788
+    width: 550,
+    height: 160,
     frame: false,
     show: false,
+    resizable: false,
+    maximizable: false,
+    // titleBarStyle: 'hidden',
+    // titleBarOverlay: {
+    //   color: '#fff'
+    // },
+
     webPreferences: {
-      nodeIntegration: false,
-      contextIsolation: true,
       devTools: false,
       preload: path.join(__dirname, 'preload.js')
     }
@@ -64,15 +60,14 @@ const createWindow = (): void => {
 // 初期化できたらウィンドウを作成
 app.whenReady().then(() => {
   createWindow()
-
   // 更新を確認
   checkUpdate().then((url) => openDownloadPage(url))
+})
 
-  app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow()
-    }
-  })
+app.on('activate', () => {
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow()
+  }
 })
 
 app.on('window-all-closed', () => {

@@ -323,7 +323,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@electron/get@npm:^1.0.1":
+"@electron/get@npm:^1.13.0":
   version: 1.13.1
   resolution: "@electron/get@npm:1.13.1"
   dependencies:
@@ -628,14 +628,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mini-css-extract-plugin@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "@types/mini-css-extract-plugin@npm:2.4.0"
+"@types/mini-css-extract-plugin@npm:^2.5.0":
+  version: 2.5.0
+  resolution: "@types/mini-css-extract-plugin@npm:2.5.0"
   dependencies:
-    "@types/node": "*"
-    tapable: ^2.2.0
-    webpack: ^5
-  checksum: 7f2be7cadb012078d4e3ba6fde8d09d586d1ec39f170f54ea5cc0654a8834b2c4c765a89710972638ebb6f97299fc9115ed5fd8ffe4db7f12332d5ad5ba3ee26
+    mini-css-extract-plugin: "*"
+  checksum: 8912e191195187e6ebf6b190cf9c636296504922472264bdec2d53e97efb261600d815d502041241326babeb56f2a8ab8ffd21f5445eb3bc065c179eb1b907b6
   languageName: node
   linkType: hard
 
@@ -734,10 +732,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/tailwindcss@npm:^3.0.2":
-  version: 3.0.2
-  resolution: "@types/tailwindcss@npm:3.0.2"
-  checksum: 2e5be8f465ee57407bda3b49d64bda3a801ef946a815ea9affbae506517968fc584996a17a3d9c8fb712e73e855e91375ad11ca17d0e099f6bab0013c246dce3
+"@types/tailwindcss@npm:^3.0.3":
+  version: 3.0.3
+  resolution: "@types/tailwindcss@npm:3.0.3"
+  checksum: c49ad4f4fa0ac35403ce9fdef26107ce651af34b31941b5558960d7c5669a2d42db6c48623cc5511bcaf566cdf823bdcf4a88388c91d5d95b95dc7683ef54f34
   languageName: node
   linkType: hard
 
@@ -2505,7 +2503,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron-builder@npm:^22.14.5":
+"electron-builder@npm:^22.14.13":
   version: 22.14.13
   resolution: "electron-builder@npm:22.14.13"
   dependencies:
@@ -2567,16 +2565,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron@npm:14.2.4":
-  version: 14.2.4
-  resolution: "electron@npm:14.2.4"
+"electron@npm:16.0.7":
+  version: 16.0.7
+  resolution: "electron@npm:16.0.7"
   dependencies:
-    "@electron/get": ^1.0.1
+    "@electron/get": ^1.13.0
     "@types/node": ^14.6.2
     extract-zip: ^1.0.3
   bin:
     electron: cli.js
-  checksum: fcae758150022181e6b9ac147460736c0e546b2141a4905b6fbe94c6bf5c1eb9e99aac31e98777937442767ddae5aaee10bd74889491d425b4b70643ae156577
+  checksum: 9ca82da3739ad737b736c9f5ff9d0e4883f69cb55128d65c39b559ad26b95502d7fb54899e01d744ee4d1d8d1414fe0a77750ed30ed187e90737562b823e1ee1
   languageName: node
   linkType: hard
 
@@ -4455,7 +4453,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mini-css-extract-plugin@npm:^2.5.2":
+"mini-css-extract-plugin@npm:*, mini-css-extract-plugin@npm:^2.5.2":
   version: 2.5.2
   resolution: "mini-css-extract-plugin@npm:2.5.2"
   dependencies:
@@ -4594,11 +4592,11 @@ __metadata:
   linkType: hard
 
 "nanoid@npm:^3.1.30":
-  version: 3.1.32
-  resolution: "nanoid@npm:3.1.32"
+  version: 3.2.0
+  resolution: "nanoid@npm:3.2.0"
   bin:
     nanoid: bin/nanoid.cjs
-  checksum: 7389375c7d9819609366cc7b2bd446c854762617a626d345e5dcdc6629f6571e071c7ba412920148065dbd939dbc5589f9e2734b244c3cb49bbddc96082adcc1
+  checksum: 3d1d5a69fea84e538057cf64106e713931c4ef32af344068ecff153ff91252f39b0f2b472e09b0dfff43ac3cf520c92938d90e6455121fe93976e23660f4fccc
   languageName: node
   linkType: hard
 
@@ -6339,19 +6337,19 @@ __metadata:
   dependencies:
     "@fontsource/m-plus-rounded-1c": ^4.5.0
     "@trivago/prettier-plugin-sort-imports": ^3.1.1
-    "@types/mini-css-extract-plugin": ^2.4.0
+    "@types/mini-css-extract-plugin": ^2.5.0
     "@types/node": ^17.0.10
     "@types/react": ^17.0.38
     "@types/react-dom": ^17.0.11
-    "@types/tailwindcss": ^3.0.2
+    "@types/tailwindcss": ^3.0.3
     "@typescript-eslint/eslint-plugin": ^5.10.0
     "@typescript-eslint/parser": ^5.10.0
     autoprefixer: ^10.4.2
     axios: ^0.25.0
     cross-env: ^7.0.3
     css-loader: ^6.5.1
-    electron: 14.2.4
-    electron-builder: ^22.14.5
+    electron: 16.0.7
+    electron-builder: ^22.14.13
     eslint: ^8.7.0
     eslint-config-prettier: ^8.3.0
     eslint-plugin-react: ^7.28.0
@@ -6369,8 +6367,8 @@ __metadata:
     tailwindcss: ^3.0.15
     ts-loader: ^9.2.6
     ts-node: ^10.4.0
-    typescript: ^4.5.4
-    webpack: ^5.66.0
+    typescript: ^4.5.5
+    webpack: ^5.67.0
     webpack-cli: ^4.9.1
   languageName: unknown
   linkType: soft
@@ -6506,23 +6504,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.5.4":
-  version: 4.5.4
-  resolution: "typescript@npm:4.5.4"
+"typescript@npm:^4.5.5":
+  version: 4.5.5
+  resolution: "typescript@npm:4.5.5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 59f3243f9cd6fe3161e6150ff6bf795fc843b4234a655dbd938a310515e0d61afd1ac942799e7415e4334255e41c2c49b7dd5d9fd38a17acd25a6779ca7e0961
+  checksum: 506f4c919dc8aeaafa92068c997f1d213b9df4d9756d0fae1a1e7ab66b585ab3498050e236113a1c9e57ee08c21ec6814ca7a7f61378c058d79af50a4b1f5a5e
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.5.4#~builtin<compat/typescript>":
-  version: 4.5.4
-  resolution: "typescript@patch:typescript@npm%3A4.5.4#~builtin<compat/typescript>::version=4.5.4&hash=493e53"
+"typescript@patch:typescript@^4.5.5#~builtin<compat/typescript>":
+  version: 4.5.5
+  resolution: "typescript@patch:typescript@npm%3A4.5.5#~builtin<compat/typescript>::version=4.5.5&hash=493e53"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 2e488dde7d2c4a2fa2e79cf2470600f8ce81bc0563c276b72df8ff412d74456ae532ba824650ae936ce207440c79720ddcfaa25e3cb4477572b8534fa4e34d49
+  checksum: c05c318d79c690f101d7ffb34cd6c7d6bbd884d3af9cefe7749ad0cd6be43c7082f098280982ca945dcba23fde34a08fed9602bb26540936baf8c0520727d3ba
   languageName: node
   linkType: hard
 
@@ -6721,16 +6719,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-sources@npm:^3.2.2":
+"webpack-sources@npm:^3.2.3":
   version: 3.2.3
   resolution: "webpack-sources@npm:3.2.3"
   checksum: 989e401b9fe3536529e2a99dac8c1bdc50e3a0a2c8669cbafad31271eadd994bc9405f88a3039cd2e29db5e6d9d0926ceb7a1a4e7409ece021fe79c37d9c4607
   languageName: node
   linkType: hard
 
-"webpack@npm:^5, webpack@npm:^5.66.0":
-  version: 5.66.0
-  resolution: "webpack@npm:5.66.0"
+"webpack@npm:^5.67.0":
+  version: 5.67.0
+  resolution: "webpack@npm:5.67.0"
   dependencies:
     "@types/eslint-scope": ^3.7.0
     "@types/estree": ^0.0.50
@@ -6755,13 +6753,13 @@ __metadata:
     tapable: ^2.1.1
     terser-webpack-plugin: ^5.1.3
     watchpack: ^2.3.1
-    webpack-sources: ^3.2.2
+    webpack-sources: ^3.2.3
   peerDependenciesMeta:
     webpack-cli:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: 5a44664a840fd64c5383aa78847b205ae0b42b607f85ee1d6a568617a210c1b9caab1822bce40a89a3b5eb0f626a83fb5fe2055c638aa230897bf224030d28e8
+  checksum: a7f810a5e1d4d78b533ca0caf42fa889839326073cedd3ac8e59e5c4890ca864ab0265fa5b2608715746ff3e34cbfaf4f15d56a92bc3f717a2f5c13202d58b6c
   languageName: node
   linkType: hard
 

@@ -85,9 +85,8 @@ const renderer = {
     renderer: path.resolve(__dirname, 'src', 'renderer.tsx')
   },
   plugins: [
-    // package.json内のバージョン情報を内部で使用可能に
     new DefinePlugin({
-      'process.env.VERSION': JSON.stringify(process.env.npm_package_version)
+      'process.env.PLATFORM': JSON.stringify(process.platform)
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
