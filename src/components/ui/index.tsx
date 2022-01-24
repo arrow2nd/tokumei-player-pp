@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useReducer, useState } from 'react'
 
 import { useAudio } from '../../hooks/useAudio'
 import { useRadioEpisode } from '../../hooks/useRadioEpisode'
@@ -13,7 +13,7 @@ import Seekbar from './seekbar'
 const UI = (): JSX.Element => {
   const [currentRadio, setCurrentRadio] = useState({} as Option)
   const [currentEpisode, setCurrentEpisode] = useState({} as Option)
-  const [isShuffle, setIsShuffle] = useState(false)
+  const [isShuffle, toggleShuffle] = useReducer((prev) => !prev, false)
 
   const radioOptions = useRadioList()
   if (radioOptions.length > 0 && !currentRadio.label && !currentRadio.value) {
@@ -100,9 +100,7 @@ const UI = (): JSX.Element => {
   }, [currentEpisode.value, getEpisodePath])
 
   // シャッフル切り替え
-  const handleChangeShuffle = useCallback(() => {
-    setIsShuffle((prev) => !prev)
-  }, [])
+  const handleChangeShuffle = useCallback(() => toggleShuffle(), [])
 
   // ブラウザを開いて記事を検索
   const handleClickOpen = useCallback(async () => {
