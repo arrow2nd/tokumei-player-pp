@@ -15,6 +15,6 @@
 ご不明な点がありましたら、お気軽にお問合せください。
 
 - Twitter: [@arrow_2nd](https://mobile.twitter.com/arrow_2nd/)
-- Email: contact🐈arrow2nd.com
+- Email: contact at arrow2nd.com
 
-※ 🐈 を @ に置き換えてください
+> ※ at を @ に置き換えてください
