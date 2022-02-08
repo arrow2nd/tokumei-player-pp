@@ -3,9 +3,9 @@
   "description": "オモコロのWebラジオを再生する非公式のソフトウェア",
   "author": {
     "name": "arrow2nd",
-    "email": "arrow2nd_workspace@zohomail.com"
+    "email": "dev@arrow2nd.com"
   },
-  "version": "1.6.0",
+  "version": "1.6.1",
   "main": "./build/main.js",
   "private": true,
   "scripts": {

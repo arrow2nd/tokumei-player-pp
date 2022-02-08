@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [1.6.1] - 2022-02-08
+
+### Security
+
+- 依存パッケージを更新
+
 ## [1.6.0] - 2022-01-24
 
 ### Changed
@@ -88,7 +94,8 @@
 
 - リリース
 
-[unreleased]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.6.0...HEAD
+[unreleased]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.6.1...HEAD
+[1.6.1]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.6.0...v1.6.1
 [1.6.0]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.3.2...v1.4.0
