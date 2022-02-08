@@ -49,7 +49,7 @@
 
 ## 🗝 プライバシーポリシー
 
-[こちら](https://arrow2nd.github.io/tokumei-player-pp/privacypolicy) をご覧ください。
+[こちら](https://arrow2nd.github.io/tokumei-player-pp/) をご覧ください。
 
 ## 🛠 ビルドと実行
 
