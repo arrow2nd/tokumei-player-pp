@@ -19,7 +19,9 @@ interface IGitHubAPIResponse {
  * @returns ダウンロードページのURL
  */
 export async function checkUpdate(): Promise<string | undefined> {
-  const res = await axios.get<IGitHubAPIResponse>(GITHUB_API_URL)
+  const res = await axios.get<IGitHubAPIResponse>(GITHUB_API_URL, {
+    timeout: 5000
+  })
 
   if (res.status !== 200) {
     console.error(res.statusText)
@@ -32,14 +34,16 @@ export async function checkUpdate(): Promise<string | undefined> {
   }
 
   const osType = os.type().toString()
-  const extList: { [index: string]: string } = {
-    Darwin: 'dmg',
-    Windows_NT: 'exe'
-  }
+  const extList = new Map([
+    ['Linux', 'AppImage'],
+    ['Darwin', 'dmg'],
+    ['Windows_NT', 'exe']
+  ])
 
-  const assets = res.data.assets.find((e: { name: string }) =>
-    e.name.includes(extList[osType])
-  )
+  const assets = res.data.assets.find(({ name }) => {
+    const ext = extList.get(osType)
+    return ext ? name.endsWith(ext) : undefined
+  })
 
   // 見つからなかったらreleasesへのURLを返す
   return assets ? assets.browser_download_url : res.data.html_url
