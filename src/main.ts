@@ -24,11 +24,6 @@ const createWindow = (): void => {
     show: false,
     resizable: false,
     maximizable: false,
-    // titleBarStyle: 'hidden',
-    // titleBarOverlay: {
-    //   color: '#fff'
-    // },
-
     webPreferences: {
       devTools: false,
       preload: path.join(__dirname, 'preload.js')
