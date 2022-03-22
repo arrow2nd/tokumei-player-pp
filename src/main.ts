@@ -24,11 +24,6 @@ const createWindow = (): void => {
     show: false,
     resizable: false,
     maximizable: false,
-    // titleBarStyle: 'hidden',
-    // titleBarOverlay: {
-    //   color: '#fff'
-    // },
-
     webPreferences: {
       devTools: false,
       preload: path.join(__dirname, 'preload.js')
@@ -60,8 +55,11 @@ const createWindow = (): void => {
 // 初期化できたらウィンドウを作成
 app.whenReady().then(() => {
   createWindow()
+
   // 更新を確認
-  checkUpdate().then((url) => openDownloadPage(url))
+  checkUpdate()
+    .then((url) => openDownloadPage(url))
+    .catch((err) => console.error(err))
 })
 
 app.on('activate', () => {

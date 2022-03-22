@@ -1,4 +1,4 @@
-# tokumei-player-pp (匿名 Player++)
+# 匿名 Player++
 
 [オモコロ](https://omocoro.jp/)で配信中の Web ラジオを再生する非公式のソフトウェア
 
@@ -9,7 +9,7 @@
 
 ![スクリーンショット](https://user-images.githubusercontent.com/44780846/136062174-050f204e-e18e-4573-88b9-2acc992195b2.png)
 
-## ❓ 機能について
+## 主な機能
 
 ### ラジオの再生・各種情報の自動取得
 
@@ -17,7 +17,7 @@
 
 オモコロで配信されているほぼ全てのラジオに対応しています。
 
-各種情報は [omkr-radio](https://github.com/arrow2nd/omkr-radio) より取得しており、自動で更新されます。
+各種情報は [omkr-radio](https://github.com/arrow2nd/omkr-radio) より取得しており、ほぼ自動で更新されています。
 
 ### 連続再生
 
@@ -37,32 +37,36 @@
 
 再生中のエピソードの記事を検索することができます。
 
-## 💾 ダウンロード
+## ダウンロード
+
+> ⚠️ ダウンロード前に **必ず** 免責事項をご覧ください
 
 [Releases](https://github.com/arrow2nd/tokumei-player-pp/releases/latest) からお使いの環境にあったファイルをダウンロードしてください。
 
-## ⚠️ 免責事項
+## 免責事項
 
-当ソフトウェア、及びソースコードを使用したことによって発生したいかなる損害について、 製作者は 一切の責任を負いません。
+当ソフトウェア、及びソースコードを使用したことによって発生したいかなる損害について、 arrow2nd 及び、コントリビュータは一切の責任を負いません。
 
 予め、ご了承ください。
 
-## 🗝 プライバシーポリシー
+## プライバシーポリシー
 
 [こちら](https://arrow2nd.github.io/tokumei-player-pp/) をご覧ください。
 
-## 🛠 ビルドと実行
+## ビルドと実行
 
 ```sh
 # いつもの
 yarn install
 
-# ビルドと実行
+# ビルド & 実行
 yarn start
 
 # ビルドのみ
 yarn build
 
 # パッケージング
-yarn pack:(win|mac|linux)
+yarn pack:win
+yarn pack:mac
+yarn pack:linux
 ```

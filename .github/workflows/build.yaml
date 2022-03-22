@@ -67,9 +67,9 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           body: |
-            ## ⚠️ 注意
+            ## 注意
             ダウンロードされる前に **必ず** [免責事項](https://github.com/${{ github.repository }}/blob/main/README.md#%EF%B8%8F-%E5%85%8D%E8%B2%AC%E4%BA%8B%E9%A0%85) をお読みください。
-            ## 🗂 ファイルについて
+            ## ファイルについて
             |OS|ファイル名|
             |-|-|
             |Windows|tokumei-player-pp-${{ env.VERSION }}.exe|
