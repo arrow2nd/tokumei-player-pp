@@ -5,7 +5,7 @@
     "name": "arrow2nd",
     "email": "dev@arrow2nd.com"
   },
-  "version": "1.7.0",
+  "version": "1.7.1",
   "main": "./build/main.js",
   "private": true,
   "scripts": {
