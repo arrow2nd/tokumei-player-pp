@@ -375,10 +375,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/m-plus-rounded-1c@npm:^4.5.3":
-  version: 4.5.3
-  resolution: "@fontsource/m-plus-rounded-1c@npm:4.5.3"
-  checksum: c9061c901ded975a7c4b58bac785bf745942c03bb73ffa58dd4f8c7df066bfcb4ad0efcde9a1714ab4a0971096168797d7d0299d7d5154019e4d4c4650f60a22
+"@fontsource/m-plus-rounded-1c@npm:^4.5.5":
+  version: 4.5.5
+  resolution: "@fontsource/m-plus-rounded-1c@npm:4.5.5"
+  checksum: 58f3d552dcb550126d074c2effe8fe1a205784a648b567f7abffd299cce17663f61d16225ed0b676def1f850e9da3967ac274dc252e016efbb950a4e2e4290a9
   languageName: node
   linkType: hard
 
@@ -6487,7 +6487,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "tokumei-player-pp@workspace:."
   dependencies:
-    "@fontsource/m-plus-rounded-1c": ^4.5.3
+    "@fontsource/m-plus-rounded-1c": ^4.5.5
     "@trivago/prettier-plugin-sort-imports": ^3.2.0
     "@types/mini-css-extract-plugin": ^2.5.1
     "@types/node": ^17.0.21
