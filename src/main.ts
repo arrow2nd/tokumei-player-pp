@@ -11,8 +11,6 @@ import path from 'path'
 
 import { checkUpdate } from './libs/checkUpdate'
 
-import { OMOKORO_SITE_BASE_URL } from './data/constants'
-
 let win: BrowserWindow
 
 const createWindow = (): void => {
@@ -103,10 +101,9 @@ ipcMain.on('win-close', () => win.close())
 ipcMain.on('win-minimize', () => win.minimize())
 
 // サイトを開く
-ipcMain.on('open-website', (_event: Electron.IpcMainEvent, keyword: string) => {
-  shell.openExternal(
-    OMOKORO_SITE_BASE_URL + `?s=${encodeURIComponent(keyword)}`
-  )
+ipcMain.on('open-website', (_event: Electron.IpcMainEvent, url: string) => {
+  if (!/^https:\/\/omocoro\.jp\/(rensai|radio)/.test(url)) return
+  shell.openExternal(url)
 })
 
 // 確認ダイアログ
