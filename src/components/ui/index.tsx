@@ -20,7 +20,7 @@ const UI = (): JSX.Element => {
     setCurrentRadio(radioOptions[0].options[0])
   }
 
-  const [episodeOptions, getEpisodePath, getRandomEpisodePath] =
+  const [episodes, episodeOptions, getEpisodePath, getRandomEpisodePath] =
     useRadioEpisode(currentRadio.value || '')
 
   const [
@@ -104,21 +104,23 @@ const UI = (): JSX.Element => {
 
   // ブラウザを開いて記事を検索
   const handleClickOpen = useCallback(async () => {
-    // ラベル内のエピソード番号を削除
-    const episodeTitle = currentEpisode.label.replace(/^#\d+\s:\s/, '')
-    const keyword = `${currentRadio.label} ${episodeTitle}`
+    const current = episodes.find(
+      ({ source }) => source === currentEpisode.value
+    )
+
+    if (!current) return
 
     // ダイアログを開く
     const isOpenWebSite = await window.api.infoDialog(
       'ブラウザを開きますか？',
-      `「${keyword}」の記事を検索します。`
+      `「${current.title}」の記事ページへアクセスします。`
     )
 
     // ブラウザを起動
     if (isOpenWebSite) {
-      window.api.openWebSite(keyword)
+      window.api.openWebSite(current.link)
     }
-  }, [currentEpisode.label, currentRadio.label])
+  }, [currentEpisode.value, episodes])
 
   return (
     <>

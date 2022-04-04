@@ -3,16 +3,16 @@ import { useEffect, useState } from 'react'
 import { API_BASE_URL } from '../data/constants'
 
 import { Option, OptionGroup } from '../types/option'
-import { ListItem } from '../types/radioData'
+import { Radio } from '../types/radio'
 
 import { fetchTimeout } from './util'
 
-function createOptions(items: ListItem[], onAir: boolean): Option[] {
-  return items
-    .filter((e) => e.onAir === onAir)
+function createOptions(radio: Radio[], nowOnAir: boolean): Option[] {
+  return radio
+    .filter((e) => e.nowOnAir === nowOnAir)
     .map(
       (e): Option => ({
-        label: e.name,
+        label: e.title,
         value: e.id
       })
     )
@@ -31,7 +31,7 @@ export const useRadioList = (): OptionGroup[] => {
       })
       if (!res) return
 
-      const json: ListItem[] = await res.json()
+      const json: Radio[] = await res.json()
 
       setRadioOptions([
         {

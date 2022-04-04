@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+## [1.8.0] - 2022-04-04
+
+### Security
+
+- 依存パッケージを更新
+
+### Changed
+
+- 記事ページを開く際、タグ検索結果ではなく直接記事ページにアクセスするよう変更
+
 ## [1.7.1] - 2022-03-25
 
 ### Security
@@ -117,7 +127,8 @@
 
 - リリース
 
-[unreleased]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.7.1...HEAD
+[unreleased]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.8.0...HEAD
+[1.8.0]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.7.1...v1.8.0
 [1.7.1]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.7.0...v1.7.1
 [1.7.0]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.6.2...v1.7.0
 [1.6.2]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.6.1...v1.6.2
