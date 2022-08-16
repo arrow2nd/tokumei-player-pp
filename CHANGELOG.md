@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+## [1.8.6] - 2022-08-16
+
+### Security
+
+- 依存パッケージを更新
+- Electron を v20 へ更新
+
 ## [1.8.5] - 2022-08-14
 
 ### Security
@@ -157,7 +164,8 @@
 
 - リリース
 
-[unreleased]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.8.5...HEAD
+[unreleased]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.8.6...HEAD
+[1.8.6]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.8.5...v1.8.6
 [1.8.5]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.8.4...v1.8.5
 [1.8.4]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.8.3...v1.8.4
 [1.8.3]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.8.2...v1.8.3
