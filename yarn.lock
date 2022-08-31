@@ -847,10 +847,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^18.7.5":
-  version: 18.7.5
-  resolution: "@types/node@npm:18.7.5"
-  checksum: f74426f2c9e81ab00e35ddca8db84efb6eb6c77e6d120bbe84d462073c371fa46e4744bd87773d9f7cf9074cf575df573bb89c3335f38f4ecbef2f03b407f35f
+"@types/node@npm:^18.7.14":
+  version: 18.7.14
+  resolution: "@types/node@npm:18.7.14"
+  checksum: 99cf28ff854100158de875cca23c7acc3cc01dfee526a52b90b7f36767c821bcbaf2be0a98a70f06f3b78f3c60639168ff949d725b61e2e124f9f71f1fb8043d
   languageName: node
   linkType: hard
 
@@ -6914,7 +6914,7 @@ __metadata:
     "@fontsource/m-plus-rounded-1c": ^4.5.9
     "@trivago/prettier-plugin-sort-imports": ^3.3.0
     "@types/mini-css-extract-plugin": ^2.5.1
-    "@types/node": ^18.7.5
+    "@types/node": ^18.7.14
     "@types/react": ^18.0.17
     "@types/react-dom": ^18.0.6
     "@types/tailwindcss": ^3.1.0
