@@ -17,7 +17,7 @@
 
 オモコロで配信されているほぼ全てのラジオに対応しています。
 
-各種情報は [omkr-radio](https://github.com/arrow2nd/omkr-radio) より取得しており、ほぼ自動で更新されています。
+各種情報は [omkr-radio](https://github.com/arrow2nd/omkr-radio) より取得しており、（ほぼ）自動で更新されます。
 
 ### 連続再生
 
@@ -56,9 +56,6 @@
 ## ビルドと実行
 
 ```sh
-# いつもの
-yarn install
-
 # ビルド & 実行
 yarn start
 
