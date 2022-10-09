@@ -84,7 +84,7 @@
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
-    "@fontsource/m-plus-rounded-1c": "^4.5.9",
+    "@fontsource/m-plus-rounded-1c": "^4.5.10",
     "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
