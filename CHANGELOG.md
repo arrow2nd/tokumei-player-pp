@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [1.8.7] - 2022-10-22
+
+### Security
+
+- 依存関係を更新
+
 ## [1.8.6] - 2022-08-16
 
 ### Security
@@ -164,7 +170,8 @@
 
 - リリース
 
-[unreleased]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.8.6...HEAD
+[unreleased]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.8.7...HEAD
+[1.8.7]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.8.6...v1.8.7
 [1.8.6]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.8.5...v1.8.6
 [1.8.5]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.8.4...v1.8.5
 [1.8.4]: https://github.com/arrow2nd/tokumei-player-pp/compare/v1.8.3...v1.8.4
