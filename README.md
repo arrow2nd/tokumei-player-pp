@@ -1,5 +1,10 @@
 # 匿名 Player++
 
+> **Warning**
+>
+> **開発は終了しました。**
+> **今後は[非公式Podcastフィード](https://github.com/arrow2nd/omkr-radio#%E9%9D%9E%E5%85%AC%E5%BC%8F-podcast-%E3%83%95%E3%82%A3%E3%83%BC%E3%83%89)をご利用ください。**
+
 [オモコロ](https://omocoro.jp/)で配信中の Web ラジオを再生する非公式のソフトウェア
 
 [![release](https://github.com/arrow2nd/tokumei-player-pp/actions/workflows/release.yaml/badge.svg)](https://github.com/arrow2nd/tokumei-player-pp/actions/workflows/release.yaml)
